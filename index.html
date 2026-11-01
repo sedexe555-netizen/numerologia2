@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=Tb-7n4fLnlAoJFQCiKvI7mL0iKrUelY2x-BSUw0996o-8bGk8vQNkPQFHr8Iu7OBJhN3UW7sOE3mg5mGejTcz1JCRslxHwy8T8pju7Mt3qb2v_jgB6aN3kJF0icHLn8U0-b7w5-EikP7uKlb5es7bA1V2KGcUU6Lk4h-dPPVxs-kET5m7AcGjl8gYu_BmFKbzsUELTThaV06S1Fl_OGEXhQBcFH__KCVe_NCIz_WpJmYt7oQYWGh5Bv3vBmDS9RKzcWCAQBGqRWqPWj0Gk--oswB8AybUtvrJdubbayB7ZNQrervKnCbRFCymsU2rL8fL01Gza-NFDMTzZYLWJhxzQ" charset="UTF-8"></script><style>
+  <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=xXZiU7eyORBxkA2v-FDIDurJXO_0ZxQWs4QIrVWMxNH14EnsV4fpc5MjJNnxCrN_0zz9SX3UyIr0NN-WMagI0h4YGYPygd47PYmETSxZqIFRRkP0dbHzucTAum_dNqyP85JIJpBrV_d-ci3IIX4mjwXC4L28gjMQNgAOxezMVtDHflz3PaFDRKymKqNxcVvXxnswgAGPxB1RGenGsalT2U3raOb0SqDbByjAzTa60nRQZMaOP5bKbjwXsyMjG1E8kS4WMudxVeW2dhDilIE2QVx0ArXnf4noafvaAHcW5zJQVcUl_XF9KFQfQGIElKS8ZWZZrejRJQoOqHYZWJKSEg" charset="UTF-8"></script><style>
     :root {
       --color-cream: #F4F0EA;       /* Молочный / Слоновая кость */
       --color-emerald: #1B3B2B;     /* Глубокий изумрудно-хвойный */
@@ -127,7 +127,7 @@
       transform: translateY(-2px);
     }
 
-    /* About Section */
+    /* About Section с фоновой иллюстрацией juliabg.jpg */
     .jp-about {
       background-color: var(--color-emerald);
       padding: 6rem 1.5rem;
@@ -144,22 +144,21 @@
 
     .jp-about-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1.1fr 0.9fr;
       gap: 4rem;
       align-items: center;
     }
 
-    .jp-about-photo {
+    .jp-about-image-card {
       width: 100%;
-      height: 480px;
-      background-color: rgba(244, 240, 234, 0.05);
+      height: 520px;
+      background-image: url('juliabg.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
       border: 1px solid rgba(244, 240, 234, 0.15);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #8a9b90;
-      font-family: var(--font-heading);
-      font-size: 1.2rem;
+      border-radius: 4px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     }
 
     .jp-about-text p {
@@ -276,8 +275,8 @@
     /* Адаптив под мобильные устройства */
     @media (max-width: 768px) {
       .jp-hero-title { font-size: 2.4rem; }
-      .jp-about-grid { grid-template-columns: 1fr; gap: 2rem; }
-      .jp-about-photo { height: 350px; }
+      .jp-about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .jp-about-image-card { height: 400px; }
       .jp-services-grid { grid-template-columns: 1fr; }
     }
   </style>
@@ -300,9 +299,6 @@
     <div class="jp-container">
       <h2 class="jp-section-title">Ваш проводник — Юля</h2>
       <div class="jp-about-grid">
-        <div class="jp-about-photo">
-          [ Фотография Юли ]
-        </div>
         <div class="jp-about-text">
           <p>В своей работе я объединяю аналитический подход тарологии и глубинную работу с практиками очищения. Моя задача — помочь вам обрести ясность в сложных ситуациях и вернуть внутреннюю опору.</p>
           <p>Работа строится без запугивания и шаблонных трактовок. Каждая сессия — это деликатный разбор вашей индивидуальной истории.</p>
@@ -322,6 +318,7 @@
             </div>
           </div>
         </div>
+        <div class="jp-about-image-card"></div>
       </div>
     </div>
   </section>
