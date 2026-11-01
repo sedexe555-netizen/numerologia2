@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=xXZiU7eyORBxkA2v-FDIDurJXO_0ZxQWs4QIrVWMxNH14EnsV4fpc5MjJNnxCrN_0zz9SX3UyIr0NN-WMagI0h4YGYPygd47PYmETSxZqIFRRkP0dbHzucTAum_dNqyP85JIJpBrV_d-ci3IIX4mjwXC4L28gjMQNgAOxezMVtDHflz3PaFDRKymKqNxcVvXxnswgAGPxB1RGenGsalT2U3raOb0SqDbByjAzTa60nRQZMaOP5bKbjwXsyMjG1E8kS4WMudxVeW2dhDilIE2QVx0ArXnf4noafvaAHcW5zJQVcUl_XF9KFQfQGIElKS8ZWZZrejRJQoOqHYZWJKSEg" charset="UTF-8"></script><style>
+  <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=pbZApBfGwdQrvxLpzuiNrt3WM9eRaF4-UeOsojPtr0JYCN16KIcpNwC3qJE7YC2cGhjdH0PIyMjM0Fq7VOQZlLhQZ9p3fqBPPGZZ1u4T6ErbMa9n_F4jbfai0t21k2tPamMbPhKXMQiQb4qzStnS5YpM4frrnA7rffmxr8cA-D1iHk3vbGpXdE0swajZYdzoCu9jxurcc5CwGQo3Uk4Wc0ncHm4OccAlT62OgxUKZITLoFu8ZF7l1CpQUZqkkdfoMLD629pxwRDfAJVa76x9dK7wvyESG_Zu6qj0YTi1obo2FKPD6eSWSjNHvPX8pH92IIfC7TmnBhcMzZF-LCZ-oQ" charset="UTF-8"></script><style>
     :root {
       --color-cream: #F4F0EA;       /* Молочный / Слоновая кость */
       --color-emerald: #1B3B2B;     /* Глубокий изумрудно-хвойный */
@@ -48,7 +48,7 @@
       padding: 0 1.5rem;
     }
 
-    /* Hero Section — адаптировано под файл heropage.png */
+    /* Hero Section — фон heropage.png */
     .jp-hero {
       position: relative;
       min-height: 90vh;
@@ -127,10 +127,30 @@
       transform: translateY(-2px);
     }
 
-    /* About Section с фоновой иллюстрацией juliabg.jpg */
+    /* About Section — второй блок с фоном juliabg.png */
     .jp-about {
-      background-color: var(--color-emerald);
+      position: relative;
+      background-image: url('juliabg.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
       padding: 6rem 1.5rem;
+    }
+
+    /* Затемнение для второго блока */
+    .jp-about-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(27, 59, 43, 0.85);
+      z-index: 1;
+    }
+
+    .jp-about .jp-container {
+      position: relative;
+      z-index: 2;
     }
 
     .jp-section-title {
@@ -144,21 +164,23 @@
 
     .jp-about-grid {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
+      grid-template-columns: 1fr 1fr;
       gap: 4rem;
       align-items: center;
     }
 
-    .jp-about-image-card {
+    .jp-about-photo {
       width: 100%;
-      height: 520px;
-      background-image: url('juliabg.png');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
+      height: 480px;
+      background-color: rgba(244, 240, 234, 0.05);
       border: 1px solid rgba(244, 240, 234, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #8a9b90;
+      font-family: var(--font-heading);
+      font-size: 1.2rem;
       border-radius: 4px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     }
 
     .jp-about-text p {
@@ -275,8 +297,8 @@
     /* Адаптив под мобильные устройства */
     @media (max-width: 768px) {
       .jp-hero-title { font-size: 2.4rem; }
-      .jp-about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .jp-about-image-card { height: 400px; }
+      .jp-about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .jp-about-photo { height: 350px; }
       .jp-services-grid { grid-template-columns: 1fr; }
     }
   </style>
@@ -296,9 +318,13 @@
 
   <!-- About Section -->
   <section class="jp-about">
+    <div class="jp-about-overlay"></div>
     <div class="jp-container">
       <h2 class="jp-section-title">Ваш проводник — Юля</h2>
       <div class="jp-about-grid">
+        <div class="jp-about-photo">
+          [ Фотография Юли ]
+        </div>
         <div class="jp-about-text">
           <p>В своей работе я объединяю аналитический подход тарологии и глубинную работу с практиками очищения. Моя задача — помочь вам обрести ясность в сложных ситуациях и вернуть внутреннюю опору.</p>
           <p>Работа строится без запугивания и шаблонных трактовок. Каждая сессия — это деликатный разбор вашей индивидуальной истории.</p>
@@ -318,7 +344,6 @@
             </div>
           </div>
         </div>
-        <div class="jp-about-image-card"></div>
       </div>
     </div>
   </section>
@@ -373,7 +398,7 @@
           </div>
           <div>
             <div class="jp-service-format">Формат: Дистанционная работа + индивидуальные рекомендации</div>
-            <a href="https://t.me/MarKusiKpupsik?text=Здравствуйте,%20Юля!%20Хочу%20записаться%20на%20Дистанционную%20чистку" target="_blank" class="jp-btn-card">Записаться в Telegram</a>
+            <a href="https://t.me/MarKusiKpupsik?text=Здравствуйте,%20Юля!%20Хочу%20записаться%20на%20Дистанционная%20чистка" target="_blank" class="jp-btn-card">Записаться в Telegram</a>
           </div>
         </div>
       </div>
