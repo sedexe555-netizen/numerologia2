@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>J.P. — Консультации & Таро</title>
+  
+  <!-- Подключение премиальных шрифтов -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=Tb-7n4fLnlAoJFQCiKvI7mL0iKrUelY2x-BSUw0996o-8bGk8vQNkPQFHr8Iu7OBJhN3UW7sOE3mg5mGejTcz1JCRslxHwy8T8pju7Mt3qb2v_jgB6aN3kJF0icHLn8U0-b7w5-EikP7uKlb5es7bA1V2KGcUU6Lk4h-dPPVxs-kET5m7AcGjl8gYu_BmFKbzsUELTThaV06S1Fl_OGEXhQBcFH__KCVe_NCIz_WpJmYt7oQYWGh5Bv3vBmDS9RKzcWCAQBGqRWqPWj0Gk--oswB8AybUtvrJdubbayB7ZNQrervKnCbRFCymsU2rL8fL01Gza-NFDMTzZYLWJhxzQ" charset="UTF-8"></script><style>
+    :root {
+      --color-cream: #F4F0EA;       /* Молочный / Слоновая кость */
+      --color-emerald: #1B3B2B;     /* Глубокий изумрудно-хвойный */
+      --color-bordeaux: #581825;    /* Бордово-винный / Марсала */
+      --color-indigo: #2D3748;      /* Пыльный графитово-синий */
+      --color-dark: #121013;        /* Угольный / Темный шоколад */
+      --font-heading: 'Cormorant Garamond', serif;
+      --font-body: 'Montserrat', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--color-indigo);
+      color: var(--color-cream);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      width: 100%;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .jp-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Hero Section — адаптировано под файл heropage.png */
+    .jp-hero {
+      position: relative;
+      min-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      text-align: center;
+      padding: 4rem 1.5rem 5rem 1.5rem;
+      background-image: url('heropage.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .jp-hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(45, 55, 72, 0.15) 0%, rgba(45, 55, 72, 0.75) 60%, var(--color-indigo) 100%);
+      z-index: 1;
+    }
+
+    .jp-hero-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 800px;
+      margin-top: auto;
+    }
+
+    .jp-hero-subtitle {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      color: #b0b7c3;
+      margin-bottom: 1rem;
+    }
+
+    .jp-hero-title {
+      font-family: var(--font-heading);
+      font-size: 3.2rem;
+      font-weight: 500;
+      line-height: 1.15;
+      margin-bottom: 1.2rem;
+    }
+
+    .jp-hero-description {
+      font-size: 1.1rem;
+      font-weight: 300;
+      max-width: 600px;
+      margin-bottom: 2rem;
+      color: #e2e8f0;
+    }
+
+    .jp-btn-primary {
+      background-color: var(--color-bordeaux);
+      color: var(--color-cream);
+      padding: 1.1rem 2.8rem;
+      border-radius: 2px;
+      font-size: 0.9rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      display: inline-block;
+      box-shadow: 0 4px 20px rgba(88, 24, 37, 0.4);
+    }
+
+    .jp-btn-primary:hover {
+      background-color: #6e1e2e;
+      transform: translateY(-2px);
+    }
+
+    /* About Section */
+    .jp-about {
+      background-color: var(--color-emerald);
+      padding: 6rem 1.5rem;
+    }
+
+    .jp-section-title {
+      font-family: var(--font-heading);
+      font-size: 2.8rem;
+      font-weight: 500;
+      margin-bottom: 3rem;
+      text-align: center;
+      letter-spacing: 0.05em;
+    }
+
+    .jp-about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .jp-about-photo {
+      width: 100%;
+      height: 480px;
+      background-color: rgba(244, 240, 234, 0.05);
+      border: 1px solid rgba(244, 240, 234, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #8a9b90;
+      font-family: var(--font-heading);
+      font-size: 1.2rem;
+    }
+
+    .jp-about-text p {
+      margin-bottom: 1.5rem;
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: #d1ded6;
+    }
+
+    .jp-principles {
+      margin-top: 2rem;
+      border-top: 1px solid rgba(244, 240, 234, 0.15);
+      padding-top: 2rem;
+    }
+
+    .jp-principle-item {
+      margin-bottom: 1.2rem;
+    }
+
+    .jp-principle-title {
+      font-weight: 600;
+      color: var(--color-cream);
+      margin-bottom: 0.2rem;
+    }
+
+    /* Services Section */
+    .jp-services {
+      padding: 6rem 1.5rem;
+      background-color: var(--color-dark);
+    }
+
+    .jp-services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .jp-service-card {
+      background-color: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(244, 240, 234, 0.1);
+      padding: 2.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: border-color 0.3s ease;
+    }
+
+    .jp-service-card:hover {
+      border-color: var(--color-bordeaux);
+    }
+
+    .jp-service-title {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      font-weight: 500;
+    }
+
+    .jp-service-desc {
+      font-size: 0.95rem;
+      color: #a0a0a0;
+      font-weight: 300;
+      margin-bottom: 1.5rem;
+    }
+
+    .jp-service-format {
+      font-size: 0.85rem;
+      color: #888;
+      border-top: 1px dashed rgba(255, 255, 255, 0.1);
+      padding-top: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .jp-btn-card {
+      background-color: transparent;
+      color: var(--color-cream);
+      border: 1px solid var(--color-bordeaux);
+      padding: 0.8rem 1.5rem;
+      text-align: center;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      display: block;
+    }
+
+    .jp-btn-card:hover {
+      background-color: var(--color-bordeaux);
+    }
+
+    /* Footer */
+    .jp-footer {
+      padding: 4rem 1.5rem 2rem;
+      background-color: var(--color-indigo);
+      border-top: 1px solid rgba(244, 240, 234, 0.1);
+      text-align: center;
+    }
+
+    .jp-footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin: 2rem 0;
+      font-size: 0.9rem;
+    }
+
+    .jp-copyright {
+      font-size: 0.8rem;
+      color: #718096;
+      margin-top: 3rem;
+    }
+
+    /* Адаптив под мобильные устройства */
+    @media (max-width: 768px) {
+      .jp-hero-title { font-size: 2.4rem; }
+      .jp-about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .jp-about-photo { height: 350px; }
+      .jp-services-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <section class="jp-hero">
+    <div class="jp-hero-overlay"></div>
+    <div class="jp-hero-content">
+      <div class="jp-hero-subtitle">Консультации & Таро</div>
+      <h1 class="jp-hero-title">Ответы на ключевые вопросы и восполнение ресурса</h1>
+      <p class="jp-hero-description">Персональные расклады и энергетические практики в формате конфиденциального личного диалога.</p>
+      <a href="#jp-services" class="jp-btn-primary">Выбрать услугу</a>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="jp-about">
+    <div class="jp-container">
+      <h2 class="jp-section-title">Ваш проводник — Юля</h2>
+      <div class="jp-about-grid">
+        <div class="jp-about-photo">
+          [ Фотография Юли ]
+        </div>
+        <div class="jp-about-text">
+          <p>В своей работе я объединяю аналитический подход тарологии и глубинную работу с практиками очищения. Моя задача — помочь вам обрести ясность в сложных ситуациях и вернуть внутреннюю опору.</p>
+          <p>Работа строится без запугивания и шаблонных трактовок. Каждая сессия — это деликатный разбор вашей индивидуальной истории.</p>
+          
+          <div class="jp-principles">
+            <div class="jp-principle-item">
+              <div class="jp-principle-title">Конфиденциальность</div>
+              <div class="jp-principle-desc" style="font-size: 0.9rem; color: #a3b8ac;">Полное сохранение тайны вашего обращения.</div>
+            </div>
+            <div class="jp-principle-item">
+              <div class="jp-principle-title">Глубина и Индивидуальность</div>
+              <div class="jp-principle-desc" style="font-size: 0.9rem; color: #a3b8ac;">Персональный разбор без быстрых готовых шаблонов.</div>
+            </div>
+            <div class="jp-principle-item">
+              <div class="jp-principle-title">Бережность</div>
+              <div class="jp-principle-desc" style="font-size: 0.9rem; color: #a3b8ac;">Экологичная работа с чувствительными темами и энергией.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="jp-services" id="jp-services">
+    <div class="jp-container">
+      <h2 class="jp-section-title">Услуги и форматы</h2>
+      
+      <div class="jp-services-grid">
+        <!-- Услуга 1 -->
+        <div class="jp-service-card">
+          <div>
+            <h3 class="jp-service-title">Экспресс-расклад</h3>
+            <p class="jp-service-desc">Быстрый и точный ответ на 1–2 конкретных вопроса: выбор решения, текущее состояние дел или совет карт.</p>
+          </div>
+          <div>
+            <div class="jp-service-format">Формат: Голосовые сообщения + фото карт в Telegram</div>
+            <a href="https://t.me/MarKusiKpupsik?text=Здравствуйте,%20Юля!%20Хочу%20записаться%20на%20Экспресс-расклад" target="_blank" class="jp-btn-card">Записаться в Telegram</a>
+          </div>
+        </div>
+
+        <!-- Услуга 2 -->
+        <div class="jp-service-card">
+          <div>
+            <h3 class="jp-service-title">Индивидуальная консультация</h3>
+            <p class="jp-service-desc">Детальный разбор сложной ситуации или конкретной сферы жизни (отношения, карьера, кризис). Анализ причин и перспектив.</p>
+          </div>
+          <div>
+            <div class="jp-service-format">Формат: Аудио/видео-разбор, персональный отчет или онлайн-встреча</div>
+            <a href="https://t.me/MarKusiKpupsik?text=Здравствуйте,%20Юля!%20Хочу%20записаться%20на%20Индивидуальную%20консультацию" target="_blank" class="jp-btn-card">Записаться в Telegram</a>
+          </div>
+        </div>
+
+        <!-- Услуга 3 -->
+        <div class="jp-service-card">
+          <div>
+            <h3 class="jp-service-title">Личная консультация + Чистка</h3>
+            <p class="jp-service-desc">Комплексный формат: персональный разбор вашего запроса в режиме реального времени и последующая энергетическая чистка.</p>
+          </div>
+          <div>
+            <div class="jp-service-format">Формат: Очная встреча или онлайн-созвон</div>
+            <a href="https://t.me/MarKusiKpupsik?text=Здравствуйте,%20Юля!%20Хочу%20записаться%20на%20Личную%20консультацию%20%2B%20чистку" target="_blank" class="jp-btn-card">Записаться в Telegram</a>
+          </div>
+        </div>
+
+        <!-- Услуга 4 -->
+        <div class="jp-service-card">
+          <div>
+            <h3 class="jp-service-title">Дистанционная чистка</h3>
+            <p class="jp-service-desc">Практика нейтрализации негативных воздействий, снятия тяжелых состояний и восстановления сил на расстоянии.</p>
+          </div>
+          <div>
+            <div class="jp-service-format">Формат: Дистанционная работа + индивидуальные рекомендации</div>
+            <a href="https://t.me/MarKusiKpupsik?text=Здравствуйте,%20Юля!%20Хочу%20записаться%20на%20Дистанционную%20чистку" target="_blank" class="jp-btn-card">Записаться в Telegram</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="jp-footer">
+    <p style="font-size: 0.9rem; color: #a0aec0;">Запись на консультации и чистки производится через личные сообщения.</p>
+    
+    <div class="jp-footer-links">
+      <a href="https://t.me/MarKusiKpupsik" target="_blank">Написать в Telegram (@MarKusiKpupsik)</a>
+    </div>
+
+    <div class="jp-copyright">
+      © J.P. Все права защищены.
+    </div>
+  </footer>
+
+</body>
+</html>
