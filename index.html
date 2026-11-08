@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=oj-FTrbASoj4GM5ZMpSa-FvV9-LMIB_DHjsQTws_hW4q78e6Fha5O8GZ0G06aDIucGcHGURkol7llDbWAl4iXRli44GrwuKK0ijqfZWq0l8lIg7KYQ5cv_G-3H0hKUz4gvww_YBlGplaHo0vmPLN9DV2Qf0AKXF9LfINNtTAuh98CS64imkxNQhWpbMSu8GKMId_iAlPGjWrYrYMFa_dQlI2_XqM42Z5AUKcwdA52_CcMINYF0T8rppugot6AMy1iF6jHf-dEXaSYrqW4JXyv4JkZ45zkacxRkHLM2RNtDn-stk_YnAx9UjnCJLE9e6T3r8tBMBHXtphj3wjYNr4aQ" charset="UTF-8"></script><style>
+  <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=Z-C2129lW5iILR41iLFSSebawUxAwdvlYJo3UQ7kKw3DasPShNClsmNqxmiGNGME2KKT_iRmXPrLZZXMMAsEfOCj5t5ItFu5Eo1XsgTPaxVLmfw7JJBm61p6_pgTa5S8ecVImNllGn46NyXqTxTcLPsBH3SUzHyPXPpoG9Q4D-sRbtBfvtCqUo-RTgE033eDcelt7wPVzCIvYnq6uqfiTRajnuzK4sXZnst2Slc6Bc2ke5PN2_BIynj_BzKjPQm7BRd8Tdy390RVc0pecqFfa6QYaibFfSNU1qpoQFX2QWwwyC2E-rYEVQ2U6THQAlsiPD33Cxn3nTpid2Y03ox1nw" charset="UTF-8"></script><style>
     :root {
       --color-cream: #F4F0EA;       /* Молочный / Слоновая кость */
       --color-emerald: #1B3B2B;     /* Глубокий изумрудно-хвойный */
@@ -29,6 +29,20 @@
 
     html {
       scroll-behavior: smooth;
+    }
+
+    /* Эффект легкого аналогового зерна на фоне */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      opacity: 0.035;
+      pointer-events: none;
+      z-index: 999;
+      background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%vh" height="100%vh" filter="url(%23noiseFilter)"/></svg>');
     }
 
     body {
@@ -52,13 +66,29 @@
       padding: 0 1.5rem;
     }
 
+    /* Плавные анимации появления элементов (Fade-in / Reveal) */
+    @keyframes jpFadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(25px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .jp-reveal {
+      animation: jpFadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
     /* Навигационная шапка (Header) */
     .jp-header {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      height: 70px; /* Фиксированная высота хедера */
+      height: 70px;
       background-color: rgba(45, 55, 72, 0.9);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(244, 240, 234, 0.1);
@@ -77,15 +107,22 @@
       align-items: center;
     }
 
+    .jp-logo-link {
+      display: flex;
+      align-items: center;
+      overflow: visible;
+    }
+
     .jp-logo-img {
-      height: 40px;
+      height: 60px;
       width: auto;
       display: block;
-      transition: opacity 0.3s ease;
+      transition: opacity 0.3s ease, transform 0.3s ease;
     }
 
     .jp-logo-img:hover {
       opacity: 0.85;
+      transform: scale(1.03);
     }
 
     .jp-nav-links {
@@ -105,11 +142,11 @@
       color: var(--color-cream);
     }
 
-    /* Hero Section — сдвинут вниз на высоту хедера, высота увеличена */
+    /* Hero Section */
     .jp-hero {
       position: relative;
-      margin-top: 70px; /* Отступ равный высоте хедера, чтобы контент не перекрывался */
-      min-height: calc(90vh - 70px); /* Компенсация высоты хедера */
+      margin-top: 70px;
+      min-height: calc(90vh - 70px);
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
@@ -201,7 +238,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(to right, rgba(27, 59, 43, 0.92) 0%, rgba(27, 59, 43, 0.85) 55%, rgba(27, 59, 43, 0.4) 100%);
+      background: rgba(27, 59, 43, 0.82);
       z-index: 1;
     }
 
@@ -238,14 +275,15 @@
       font-family: var(--font-heading);
       font-size: 1.2rem;
       border-radius: 4px;
-      backdrop-filter: blur(2px);
+      transition: border-color 0.3s ease;
+    }
+
+    .jp-about-photo:hover {
+      border-color: rgba(244, 240, 234, 0.4);
     }
 
     .jp-about-text {
-      background: rgba(27, 59, 43, 0.4);
-      padding: 2rem;
-      border-radius: 4px;
-      backdrop-filter: blur(4px);
+      padding: 0;
     }
 
     .jp-about-text p {
@@ -313,11 +351,13 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: border-color 0.3s ease;
+      transition: all 0.4s ease;
     }
 
     .jp-service-card:hover {
       border-color: var(--color-bordeaux);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(88, 24, 37, 0.2);
     }
 
     .jp-service-title {
@@ -381,6 +421,12 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      transition: all 0.4s ease;
+    }
+
+    .jp-review-card:hover {
+      border-color: rgba(244, 240, 234, 0.25);
+      transform: translateY(-3px);
     }
 
     .jp-review-text {
@@ -447,7 +493,7 @@
   </header>
 
   <!-- Hero Section -->
-  <section class="jp-hero">
+  <section class="jp-hero jp-reveal">
     <div class="jp-hero-overlay"></div>
     <div class="jp-hero-content">
       <div class="jp-hero-subtitle">Консультации & Таро</div>
@@ -458,7 +504,7 @@
   </section>
 
   <!-- About Section -->
-  <section class="jp-about" id="jp-about">
+  <section class="jp-about jp-reveal" id="jp-about">
     <div class="jp-about-overlay"></div>
     <div class="jp-container">
       <h2 class="jp-section-title">Ваш проводник — Юля</h2>
@@ -492,7 +538,7 @@
   </section>
 
   <!-- Services Section -->
-  <section class="jp-services" id="jp-services">
+  <section class="jp-services jp-reveal" id="jp-services">
     <div class="jp-container">
       <h2 class="jp-section-title">Услуги и форматы</h2>
       
@@ -549,7 +595,7 @@
   </section>
 
   <!-- Reviews Section -->
-  <section class="jp-reviews" id="jp-reviews">
+  <section class="jp-reviews jp-reveal" id="jp-reviews">
     <div class="jp-container">
       <h2 class="jp-section-title">Отзывы</h2>
       <div class="jp-reviews-grid">
