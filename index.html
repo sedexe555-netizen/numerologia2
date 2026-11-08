@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=pbZApBfGwdQrvxLpzuiNrt3WM9eRaF4-UeOsojPtr0JYCN16KIcpNwC3qJE7YC2cGhjdH0PIyMjM0Fq7VOQZlLhQZ9p3fqBPPGZZ1u4T6ErbMa9n_F4jbfai0t21k2tPamMbPhKXMQiQb4qzStnS5YpM4frrnA7rffmxr8cA-D1iHk3vbGpXdE0swajZYdzoCu9jxurcc5CwGQo3Uk4Wc0ncHm4OccAlT62OgxUKZITLoFu8ZF7l1CpQUZqkkdfoMLD629pxwRDfAJVa76x9dK7wvyESG_Zu6qj0YTi1obo2FKPD6eSWSjNHvPX8pH92IIfC7TmnBhcMzZF-LCZ-oQ" charset="UTF-8"></script><style>
+  <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=Z9CTQjP_Ze6jMhrP5jb95ToefpWnnKpqC3wrx-aPHEO-jkTLroh-r_YbszqHn3DIpIpi-uufRljN8U_XZcY2_e-hkwTB3xB4FgotpAB_lbcvYihs85tCub9fAaZWt-2FgdDrRXKUMPsazSbigpNCswge_x6ch7gQ24YkvHRxuZ70YOXJmcC3y59MaysnUkO6up5QP93cEq8szJq7AzQEZ6kHTjE2tzsac9CIndMEVgkPTQX2joDDSxdXl5PgsrvL_Dg0LND2n7V_JMqAfeFefzyZCN7Fcsx7E_J_LvZfxNsuetIIY1bc96i3vtG0AXMDTV4PDdJxjkgLx04dWyV31w" charset="UTF-8"></script><style>
     :root {
       --color-cream: #F4F0EA;       /* Молочный / Слоновая кость */
       --color-emerald: #1B3B2B;     /* Глубокий изумрудно-хвойный */
@@ -25,6 +25,10 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
@@ -127,24 +131,23 @@
       transform: translateY(-2px);
     }
 
-    /* About Section — второй блок с фоном juliabg.png */
+    /* About Section — второй блок с адаптированным фоном juliabg.png */
     .jp-about {
       position: relative;
       background-image: url('juliabg.png');
       background-size: cover;
-      background-position: center;
+      background-position: right center;
       background-repeat: no-repeat;
       padding: 6rem 1.5rem;
     }
 
-    /* Затемнение для второго блока */
     .jp-about-overlay {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(27, 59, 43, 0.85);
+      background: linear-gradient(to right, rgba(27, 59, 43, 0.92) 0%, rgba(27, 59, 43, 0.85) 55%, rgba(27, 59, 43, 0.4) 100%);
       z-index: 1;
     }
 
@@ -172,7 +175,7 @@
     .jp-about-photo {
       width: 100%;
       height: 480px;
-      background-color: rgba(244, 240, 234, 0.05);
+      background-color: rgba(244, 240, 234, 0.03);
       border: 1px solid rgba(244, 240, 234, 0.15);
       display: flex;
       align-items: center;
@@ -181,6 +184,14 @@
       font-family: var(--font-heading);
       font-size: 1.2rem;
       border-radius: 4px;
+      backdrop-filter: blur(2px);
+    }
+
+    .jp-about-text {
+      background: rgba(27, 59, 43, 0.4);
+      padding: 2rem;
+      border-radius: 4px;
+      backdrop-filter: blur(4px);
     }
 
     .jp-about-text p {
@@ -194,6 +205,7 @@
       margin-top: 2rem;
       border-top: 1px solid rgba(244, 240, 234, 0.15);
       padding-top: 2rem;
+      margin-bottom: 2rem;
     }
 
     .jp-principle-item {
@@ -204,6 +216,28 @@
       font-weight: 600;
       color: var(--color-cream);
       margin-bottom: 0.2rem;
+    }
+
+    /* Кнопка перехода к услугам во втором блоке */
+    .jp-btn-secondary {
+      background-color: transparent;
+      color: var(--color-cream);
+      border: 1px solid var(--color-cream);
+      padding: 0.9rem 2rem;
+      border-radius: 2px;
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      display: inline-block;
+      margin-top: 1rem;
+    }
+
+    .jp-btn-secondary:hover {
+      background-color: var(--color-cream);
+      color: var(--color-emerald);
+      transform: translateY(-2px);
     }
 
     /* Services Section */
@@ -343,6 +377,8 @@
               <div class="jp-principle-desc" style="font-size: 0.9rem; color: #a3b8ac;">Экологичная работа с чувствительными темами и энергией.</div>
             </div>
           </div>
+
+          <a href="#jp-services" class="jp-btn-secondary">Перейти к услугам</a>
         </div>
       </div>
     </div>
@@ -398,7 +434,7 @@
           </div>
           <div>
             <div class="jp-service-format">Формат: Дистанционная работа + индивидуальные рекомендации</div>
-            <a href="https://t.me/MarKusiKpupsik?text=Здравствуйте,%20Юля!%20Хочу%20записаться%20на%20Дистанционная%20чистка" target="_blank" class="jp-btn-card">Записаться в Telegram</a>
+            <a href="https://t.me/MarKusiKpupsik?text=Здравствуйте,%20Юля!%20Хочу%20записаться%20на%20Дистанционную%20чистку" target="_blank" class="jp-btn-card">Записаться в Telegram</a>
           </div>
         </div>
       </div>
