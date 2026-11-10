@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=oREb1n8sKSBbzwOboFPXlYtP5TEwQLCw5nYFHorduqLvD6ZMOmB6OcjJlPRMmra8wNJMAgUUyi9qoaX6x-l1ahX4R3oheg3favTyYCLnSJuhF5phRSHIg_uasSGwHect3NDwHZJFB05iBzmz7e0BySh40PH4P7EBy3HmLHi1bA0XJTOeNj4U-AlUZdNtp1LL90XbSV483TU0AEaF8rzGPw3bNsDtSprj_CsPReht6A14PACkAgzSphrYJzsq286zLUcj7eDeZuzrDRyqhxpAa3vfdgFJ_sfVqDWZ9Vtixp6wfrepk3Ls3VKmZwgZ_rN9tMp5Q3tNmnm6wQCcVeU51Q" charset="UTF-8"></script><style>
+  <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=guSPnDMdmOXaDEXxzkpOsBFTJN5ghW_4OMXInSYulh7VhpjHUZCHCGX0Vi7AnBI4mVbrR61tjB8m-SXICcjYSPQA9Eny3WYx-I3WjFzPOteo5wGLBUlWSEp2HM5CkAIFm8d90e1PS33kBdrRM13B4tzPrePXCgM8TfiBOKL6uLKdCJEaRLEJmUCQ-sL-i5nNBVjlaiB3O1CVyeibSyu9SrCynscUQH5Dfe85GJN4NOuD1l98gB0T0g-CYekXqh7P0QlVRbo4YYnedBJKTc4zI41COzIXSh8F9tNZZ-fJPISCofEwp3kpGXDNRDexltxCFLN9jHc61ANL_HfZG7KSGw" charset="UTF-8"></script><style>
     :root {
       --color-cream: #F4F0EA;       /* Молочный / Слоновая кость */
       --color-emerald: #1B3B2B;     /* Глубокий изумрудно-хвойный */
@@ -158,6 +158,7 @@
       background-position: center;
       background-repeat: no-repeat;
       background-attachment: fixed;
+      overflow: hidden;
     }
 
     .jp-hero-overlay {
@@ -204,6 +205,15 @@
       color: #e2e8f0;
     }
 
+    @keyframes jpBtnPulse {
+      0%, 100% {
+        box-shadow: 0 4px 20px rgba(88, 24, 37, 0.4), 0 0 0px rgba(180, 50, 75, 0);
+      }
+      50% {
+        box-shadow: 0 6px 25px rgba(88, 24, 37, 0.7), 0 0 20px rgba(180, 50, 75, 0.4);
+      }
+    }
+
     .jp-btn-primary {
       background-color: var(--color-bordeaux);
       color: var(--color-cream);
@@ -215,13 +225,31 @@
       font-weight: 500;
       transition: all 0.4s ease;
       display: inline-block;
-      box-shadow: 0 4px 20px rgba(88, 24, 37, 0.4);
+      animation: jpBtnPulse 4s ease-in-out infinite;
     }
 
     .jp-btn-primary:hover {
       background-color: #6e1e2e;
       transform: translateY(-2px);
-      box-shadow: 0 0 25px rgba(180, 50, 75, 0.6), 0 4px 20px rgba(88, 24, 37, 0.8);
+      box-shadow: 0 0 25px rgba(180, 50, 75, 0.8), 0 4px 20px rgba(88, 24, 37, 0.9);
+    }
+
+    /* Анимация плавающих пылинок */
+    @keyframes jpParticleFloat {
+      0% {
+        transform: translateY(0) translateX(0);
+        opacity: 0;
+      }
+      20% {
+        opacity: 0.8;
+      }
+      80% {
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-80vh) translateX(30px);
+        opacity: 0;
+      }
     }
 
     /* About Section (размер 1895x1000px) — классическое расположение: фото слева, текст справа */
@@ -245,9 +273,9 @@
       position: absolute;
       top: 0;
       left: 0;
-      width: 65%;
+      width: 100%;
       height: 100%;
-      background: linear-gradient(to right, rgba(27, 59, 43, 0.95) 0%, rgba(27, 59, 43, 0.88) 85%, rgba(27, 59, 43, 0) 100%);
+      background: rgba(27, 59, 43, 0.82);
       z-index: 1;
     }
 
@@ -275,6 +303,17 @@
       letter-spacing: 0.05em;
     }
 
+    @keyframes jpPhotoGlow {
+      0%, 100% {
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(27, 59, 43, 0.4);
+        border-color: rgba(244, 240, 234, 0.2);
+      }
+      50% {
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(88, 24, 37, 0.5);
+        border-color: rgba(244, 240, 234, 0.4);
+      }
+    }
+
     .jp-about-photo-wrapper {
       width: 100%;
       height: 520px;
@@ -282,7 +321,7 @@
       border-radius: 4px;
       overflow: hidden;
       background-color: rgba(244, 240, 234, 0.03);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+      animation: jpPhotoGlow 6s ease-in-out infinite;
     }
 
     .jp-about-photo-wrapper img {
@@ -694,6 +733,37 @@
       © J.P. Все права защищены.
     </div>
   </footer>
+
+  <!-- Скрипт создания плавающих пылинок в Hero блоке -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const hero = document.querySelector('.jp-hero');
+      if (!hero) return;
+
+      for (let i = 0; i < 25; i++) {
+        const particle = document.createElement('div');
+        const size = Math.random() * 3 + 1;
+        const left = Math.random() * 100;
+        const duration = Math.random() * 10 + 8;
+        const delay = Math.random() * 5;
+
+        particle.style.cssText = `
+          position: absolute;
+          bottom: -10px;
+          left: ${left}%;
+          width: ${size}px;
+          height: ${size}px;
+          background: rgba(244, 240, 234, ${Math.random() * 0.5 + 0.3});
+          box-shadow: 0 0 ${size * 2}px rgba(244, 240, 234, 0.8);
+          border-radius: 50%;
+          pointer-events: none;
+          z-index: 2;
+          animation: jpParticleFloat ${duration}s infinite linear ${delay}s;
+        `;
+        hero.appendChild(particle);
+      }
+    });
+  </script>
 
 </body>
 </html>
