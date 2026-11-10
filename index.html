@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=X1B_I7yZF6XmZNIUp0Sf1HX3QOC5B_cMbOvJBCsHlD9dtVeSBM4aw5KbWEqYQQhMLOUEcimrmP7Bk2BHYoWuS1wA2YHw1YkntkJygKJFyU1UqBDAlGrCmHqrtUj-4vcGueg2V7aBHqSilXBM7kl2BVi6WWdYJEbHxBuxkSqOw--z0UY8AhqNUhFHl8jMcqW63Xkr8HkI4mReSkTCxp5fZyqMEpK5blEAR2lWJlVUmoLFPAX5mdnMhTdwrF-fKJiAAtVkYrv-vJ7qwJdmkaGoJUpGpMuFx_X4Uz4vf374wTQVEJyYw3Aom7zEbRjpXBX4of2QX376ip9JKyu4P7DmyA" charset="UTF-8"></script><style>
+  <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=oREb1n8sKSBbzwOboFPXlYtP5TEwQLCw5nYFHorduqLvD6ZMOmB6OcjJlPRMmra8wNJMAgUUyi9qoaX6x-l1ahX4R3oheg3favTyYCLnSJuhF5phRSHIg_uasSGwHect3NDwHZJFB05iBzmz7e0BySh40PH4P7EBy3HmLHi1bA0XJTOeNj4U-AlUZdNtp1LL90XbSV483TU0AEaF8rzGPw3bNsDtSprj_CsPReht6A14PACkAgzSphrYJzsq286zLUcj7eDeZuzrDRyqhxpAa3vfdgFJ_sfVqDWZ9Vtixp6wfrepk3Ls3VKmZwgZ_rN9tMp5Q3tNmnm6wQCcVeU51Q" charset="UTF-8"></script><style>
     :root {
       --color-cream: #F4F0EA;       /* Молочный / Слоновая кость */
       --color-emerald: #1B3B2B;     /* Глубокий изумрудно-хвойный */
@@ -224,7 +224,7 @@
       box-shadow: 0 0 25px rgba(180, 50, 75, 0.6), 0 4px 20px rgba(88, 24, 37, 0.8);
     }
 
-    /* About Section (размер 1895x1000px) — адаптация под арт на фоне и место для фото */
+    /* About Section (размер 1895x1000px) — классическое расположение: фото слева, текст справа */
     .jp-about {
       position: relative;
       width: 1895px;
@@ -241,14 +241,13 @@
       padding: 0 4rem;
     }
 
-    /* Градиентное затемнение для левой половины под текст и фото, оставляющее арт справа открытым */
     .jp-about-overlay {
       position: absolute;
       top: 0;
       left: 0;
-      width: 52%;
+      width: 65%;
       height: 100%;
-      background: linear-gradient(to right, rgba(27, 59, 43, 0.95) 0%, rgba(27, 59, 43, 0.88) 80%, rgba(27, 59, 43, 0) 100%);
+      background: linear-gradient(to right, rgba(27, 59, 43, 0.95) 0%, rgba(27, 59, 43, 0.88) 85%, rgba(27, 59, 43, 0) 100%);
       z-index: 1;
     }
 
@@ -256,14 +255,14 @@
       position: relative;
       z-index: 2;
       width: 100%;
-      max-width: 1400px;
+      max-width: 1300px;
       margin: 0 auto;
     }
 
     .jp-about-grid {
       display: grid;
-      grid-template-columns: 500px 1fr;
-      gap: 4rem;
+      grid-template-columns: 420px 1fr;
+      gap: 5rem;
       align-items: center;
     }
 
@@ -278,16 +277,12 @@
 
     .jp-about-photo-wrapper {
       width: 100%;
-      height: 380px;
+      height: 520px;
       border: 1px solid rgba(244, 240, 234, 0.25);
       border-radius: 4px;
       overflow: hidden;
       background-color: rgba(244, 240, 234, 0.03);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 1.5rem;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
     }
 
     .jp-about-photo-wrapper img {
@@ -580,15 +575,14 @@
     <div class="jp-about-container">
       <div class="jp-about-grid">
         
-        <!-- Левая часть: Название, Фотография Юли, Описание и Принципы -->
+        <!-- Левая колонка: Фотография Юли -->
+        <div class="jp-about-photo-wrapper">
+          <img src="julia.jpg" alt="Юля — проводник" onerror="this.style.display='none'; this.parentNode.innerText='[ Фотография Юли ]';">
+        </div>
+
+        <!-- Правая колонка: Заголовок, описание и принципы -->
         <div class="jp-about-text">
           <h2 class="jp-section-title-about">Ваш проводник — Юля</h2>
-          
-          <!-- Блок под фото Юли (при отсутствии файла автоматом сработает фоллбек-текст) -->
-          <div class="jp-about-photo-wrapper">
-            <img src="julia.jpg" alt="Юля — проводник" onerror="this.style.display='none'; this.parentNode.innerText='[ Фотография Юли ]';">
-          </div>
-
           <p>В своей работе я объединяю аналитический подход тарологии и глубинную работу с практиками очищения. Моя задача — помочь вам обрести ясность в сложных ситуациях и вернуть внутреннюю опору.</p>
           <p>Работа строится без запугивания и шаблонных трактовок. Каждая сессия — это деликатный разбор вашей индивидуальной истории.</p>
           
@@ -609,9 +603,6 @@
 
           <a href="#jp-services" class="jp-btn-secondary">Перейти к услугам</a>
         </div>
-
-        <!-- Правая часть пустая: полностью открывает золотой арт с карты Таро на фоне -->
-        <div></div>
 
       </div>
     </div>
