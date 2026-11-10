@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=Z-C2129lW5iILR41iLFSSebawUxAwdvlYJo3UQ7kKw3DasPShNClsmNqxmiGNGME2KKT_iRmXPrLZZXMMAsEfOCj5t5ItFu5Eo1XsgTPaxVLmfw7JJBm61p6_pgTa5S8ecVImNllGn46NyXqTxTcLPsBH3SUzHyPXPpoG9Q4D-sRbtBfvtCqUo-RTgE033eDcelt7wPVzCIvYnq6uqfiTRajnuzK4sXZnst2Slc6Bc2ke5PN2_BIynj_BzKjPQm7BRd8Tdy390RVc0pecqFfa6QYaibFfSNU1qpoQFX2QWwwyC2E-rYEVQ2U6THQAlsiPD33Cxn3nTpid2Y03ox1nw" charset="UTF-8"></script><style>
+  <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=X1B_I7yZF6XmZNIUp0Sf1HX3QOC5B_cMbOvJBCsHlD9dtVeSBM4aw5KbWEqYQQhMLOUEcimrmP7Bk2BHYoWuS1wA2YHw1YkntkJygKJFyU1UqBDAlGrCmHqrtUj-4vcGueg2V7aBHqSilXBM7kl2BVi6WWdYJEbHxBuxkSqOw--z0UY8AhqNUhFHl8jMcqW63Xkr8HkI4mReSkTCxp5fZyqMEpK5blEAR2lWJlVUmoLFPAX5mdnMhTdwrF-fKJiAAtVkYrv-vJ7qwJdmkaGoJUpGpMuFx_X4Uz4vf374wTQVEJyYw3Aom7zEbRjpXBX4of2QX376ip9JKyu4P7DmyA" charset="UTF-8"></script><style>
     :root {
       --color-cream: #F4F0EA;       /* Молочный / Слоновая кость */
       --color-emerald: #1B3B2B;     /* Глубокий изумрудно-хвойный */
@@ -66,20 +66,20 @@
       padding: 0 1.5rem;
     }
 
-    /* Плавные анимации появления элементов (Fade-in / Reveal) */
-    @keyframes jpFadeUp {
+    /* Плавные анимации появления и приближения элементов (Scroll Zoom & Reveal) */
+    @keyframes jpZoomFadeUp {
       from {
         opacity: 0;
-        transform: translateY(25px);
+        transform: translateY(30px) scale(0.97);
       }
       to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
       }
     }
 
     .jp-reveal {
-      animation: jpFadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      animation: jpZoomFadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
     /* Навигационная шапка (Header) */
@@ -157,6 +157,7 @@
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
+      background-attachment: fixed;
     }
 
     .jp-hero-overlay {
@@ -212,7 +213,7 @@
       letter-spacing: 0.15em;
       text-transform: uppercase;
       font-weight: 500;
-      transition: all 0.3s ease;
+      transition: all 0.4s ease;
       display: inline-block;
       box-shadow: 0 4px 20px rgba(88, 24, 37, 0.4);
     }
@@ -220,66 +221,80 @@
     .jp-btn-primary:hover {
       background-color: #6e1e2e;
       transform: translateY(-2px);
+      box-shadow: 0 0 25px rgba(180, 50, 75, 0.6), 0 4px 20px rgba(88, 24, 37, 0.8);
     }
 
-    /* About Section */
+    /* About Section (размер 1895x1000px) — адаптация под арт на фоне и место для фото */
     .jp-about {
       position: relative;
+      width: 1895px;
+      max-width: 100%;
+      height: 1000px;
+      margin: 0 auto;
       background-image: url('juliabg.png');
       background-size: cover;
-      background-position: right center;
+      background-position: center;
       background-repeat: no-repeat;
-      padding: 6rem 1.5rem;
+      background-attachment: fixed;
+      display: flex;
+      align-items: center;
+      padding: 0 4rem;
     }
 
+    /* Градиентное затемнение для левой половины под текст и фото, оставляющее арт справа открытым */
     .jp-about-overlay {
       position: absolute;
       top: 0;
       left: 0;
-      width: 100%;
+      width: 52%;
       height: 100%;
-      background: rgba(27, 59, 43, 0.82);
+      background: linear-gradient(to right, rgba(27, 59, 43, 0.95) 0%, rgba(27, 59, 43, 0.88) 80%, rgba(27, 59, 43, 0) 100%);
       z-index: 1;
     }
 
-    .jp-about .jp-container {
+    .jp-about-container {
       position: relative;
       z-index: 2;
-    }
-
-    .jp-section-title {
-      font-family: var(--font-heading);
-      font-size: 2.8rem;
-      font-weight: 500;
-      margin-bottom: 3rem;
-      text-align: center;
-      letter-spacing: 0.05em;
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
     }
 
     .jp-about-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 500px 1fr;
       gap: 4rem;
       align-items: center;
     }
 
-    .jp-about-photo {
+    .jp-section-title-about {
+      font-family: var(--font-heading);
+      font-size: 3rem;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+      text-align: left;
+      letter-spacing: 0.05em;
+    }
+
+    .jp-about-photo-wrapper {
       width: 100%;
-      height: 480px;
+      height: 380px;
+      border: 1px solid rgba(244, 240, 234, 0.25);
+      border-radius: 4px;
+      overflow: hidden;
       background-color: rgba(244, 240, 234, 0.03);
-      border: 1px solid rgba(244, 240, 234, 0.15);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #8a9b90;
-      font-family: var(--font-heading);
-      font-size: 1.2rem;
-      border-radius: 4px;
-      transition: border-color 0.3s ease;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
     }
 
-    .jp-about-photo:hover {
-      border-color: rgba(244, 240, 234, 0.4);
+    .jp-about-photo-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
     }
 
     .jp-about-text {
@@ -287,57 +302,102 @@
     }
 
     .jp-about-text p {
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
       font-size: 1.05rem;
       font-weight: 300;
       color: #d1ded6;
     }
 
     .jp-principles {
-      margin-top: 2rem;
+      margin-top: 1.2rem;
       border-top: 1px solid rgba(244, 240, 234, 0.15);
-      padding-top: 2rem;
-      margin-bottom: 2rem;
+      padding-top: 1.2rem;
+      margin-bottom: 1.2rem;
     }
 
     .jp-principle-item {
-      margin-bottom: 1.2rem;
+      margin-bottom: 0.8rem;
     }
 
     .jp-principle-title {
       font-weight: 600;
       color: var(--color-cream);
-      margin-bottom: 0.2rem;
+      margin-bottom: 0.1rem;
     }
 
     .jp-btn-secondary {
       background-color: transparent;
       color: var(--color-cream);
       border: 1px solid var(--color-cream);
-      padding: 0.9rem 2rem;
+      padding: 0.8rem 1.8rem;
       border-radius: 2px;
       font-size: 0.85rem;
       letter-spacing: 0.15em;
       text-transform: uppercase;
       font-weight: 500;
-      transition: all 0.3s ease;
+      transition: all 0.4s ease;
       display: inline-block;
-      margin-top: 1rem;
     }
 
     .jp-btn-secondary:hover {
       background-color: var(--color-cream);
       color: var(--color-emerald);
       transform: translateY(-2px);
+      box-shadow: 0 0 20px rgba(244, 240, 234, 0.4);
     }
 
-    /* Services Section */
+    /* Services Section с живым фоном */
     .jp-services {
+      position: relative;
       padding: 6rem 1.5rem;
       background-color: var(--color-dark);
+      overflow: hidden;
+    }
+
+    @keyframes jpAmbientMove {
+      0% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(40px, 30px) scale(1.15); }
+      100% { transform: translate(0, 0) scale(1); }
+    }
+
+    .jp-services::before {
+      content: "";
+      position: absolute;
+      top: -150px;
+      left: -150px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(88, 24, 37, 0.3) 0%, rgba(0, 0, 0, 0) 70%);
+      pointer-events: none;
+      z-index: 0;
+      animation: jpAmbientMove 12s ease-in-out infinite;
+    }
+
+    .jp-services::after {
+      content: "";
+      position: absolute;
+      bottom: -150px;
+      right: -150px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(27, 59, 43, 0.25) 0%, rgba(0, 0, 0, 0) 70%);
+      pointer-events: none;
+      z-index: 0;
+      animation: jpAmbientMove 15s ease-in-out infinite reverse;
+    }
+
+    .jp-section-title {
+      font-family: var(--font-heading);
+      font-size: 3.2rem;
+      font-weight: 500;
+      margin-bottom: 2.5rem;
+      text-align: center;
+      letter-spacing: 0.05em;
     }
 
     .jp-services-grid {
+      position: relative;
+      z-index: 1;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 2rem;
@@ -357,7 +417,7 @@
     .jp-service-card:hover {
       border-color: var(--color-bordeaux);
       transform: translateY(-4px);
-      box-shadow: 0 10px 30px rgba(88, 24, 37, 0.2);
+      box-shadow: 0 10px 30px rgba(88, 24, 37, 0.25), 0 0 15px rgba(88, 24, 37, 0.3);
     }
 
     .jp-service-title {
@@ -391,19 +451,22 @@
       font-size: 0.8rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      transition: all 0.3s ease;
+      transition: all 0.4s ease;
       display: block;
     }
 
     .jp-btn-card:hover {
       background-color: var(--color-bordeaux);
+      box-shadow: 0 0 15px rgba(180, 50, 75, 0.5);
     }
 
     /* Reviews Section */
     .jp-reviews {
+      position: relative;
       padding: 6rem 1.5rem;
       background-color: var(--color-indigo);
       border-top: 1px solid rgba(244, 240, 234, 0.08);
+      overflow: hidden;
     }
 
     .jp-reviews-grid {
@@ -427,6 +490,7 @@
     .jp-review-card:hover {
       border-color: rgba(244, 240, 234, 0.25);
       transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3), 0 0 15px rgba(27, 59, 43, 0.3);
     }
 
     .jp-review-text {
@@ -461,7 +525,7 @@
     }
 
     .jp-copyright {
-      font-size: 0.8rem;
+      font-size: 0.80rem;
       color: #718096;
       margin-top: 3rem;
     }
@@ -469,8 +533,15 @@
     /* Адаптив под мобильные устройства */
     @media (max-width: 768px) {
       .jp-hero-title { font-size: 2.4rem; }
+      .jp-hero, .jp-about { background-attachment: scroll; }
+      .jp-about {
+        width: 100%;
+        height: auto;
+        padding: 4rem 1.5rem;
+      }
+      .jp-about-overlay { width: 100%; }
+      .jp-section-title-about { text-align: center; }
       .jp-about-grid { grid-template-columns: 1fr; gap: 2rem; }
-      .jp-about-photo { height: 350px; }
       .jp-services-grid { grid-template-columns: 1fr; }
       .jp-nav-links { display: none; }
     }
@@ -478,7 +549,7 @@
 </head>
 <body>
 
-  <!-- Навигационная шапка с графическим логотипом logo.png -->
+  <!-- Навигационная шапка c logo.png -->
   <header class="jp-header">
     <div class="jp-header-container">
       <a href="#" class="jp-logo-link">
@@ -503,16 +574,21 @@
     </div>
   </section>
 
-  <!-- About Section -->
+  <!-- About Section (1895x1000px) -->
   <section class="jp-about jp-reveal" id="jp-about">
     <div class="jp-about-overlay"></div>
-    <div class="jp-container">
-      <h2 class="jp-section-title">Ваш проводник — Юля</h2>
+    <div class="jp-about-container">
       <div class="jp-about-grid">
-        <div class="jp-about-photo">
-          [ Фотография Юли ]
-        </div>
+        
+        <!-- Левая часть: Название, Фотография Юли, Описание и Принципы -->
         <div class="jp-about-text">
+          <h2 class="jp-section-title-about">Ваш проводник — Юля</h2>
+          
+          <!-- Блок под фото Юли (при отсутствии файла автоматом сработает фоллбек-текст) -->
+          <div class="jp-about-photo-wrapper">
+            <img src="julia.jpg" alt="Юля — проводник" onerror="this.style.display='none'; this.parentNode.innerText='[ Фотография Юли ]';">
+          </div>
+
           <p>В своей работе я объединяю аналитический подход тарологии и глубинную работу с практиками очищения. Моя задача — помочь вам обрести ясность в сложных ситуациях и вернуть внутреннюю опору.</p>
           <p>Работа строится без запугивания и шаблонных трактовок. Каждая сессия — это деликатный разбор вашей индивидуальной истории.</p>
           
@@ -533,6 +609,10 @@
 
           <a href="#jp-services" class="jp-btn-secondary">Перейти к услугам</a>
         </div>
+
+        <!-- Правая часть пустая: полностью открывает золотой арт с карты Таро на фоне -->
+        <div></div>
+
       </div>
     </div>
   </section>
