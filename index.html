@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=vbUXtn8-oGU5e7agyTKBrY3W7a9t4cbHWikh7TSDu7iOxwCiyn-ag5iZppu-_Mz7vMOMk-EOyHIqzk5s00EaOS9InT-dahWktMP7XrDHfFJkdI6D8h3fNlyVZkME49Laxx7BwXMUbH4GLKeS8JBmvVxvnj_-2sxgernnQTGoLIYL7tcH5cHDSP0s7GPN8F4i8zf2MHFYXlcb130GsbNR7ta4YThsHb9G_63VsZekzVfTE__3VYVJKJnbzggEpJg2lzzEWdG3LpG_D2BJUjzhrcjQrV18-I5OKj9vg8Khv5qIntsPyEC7afRRVffEMD7EK5h44IcoeLCHduIg3OmZmQ" charset="UTF-8"></script><style>
+  <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=5AszbZAe8dFNSzXU7JKIY5OUANmmPMpXs-Anuq5rWzX7OO5bALcI71IPs7_t5d160GbD3sSXdqnVZEUT4AbsQaqX75jgf8JK0Nv7nr9WsXxvMmco-ceWIh4nr-25k9oZlefPSInrCBAE6Acxc4mgCP86dhjdcdqKRQBOn6794Ffn32jTIAgBHsrRF8GV7Ui8ZoKWLX7VSEafc0_Z37tTlH3IuG-g5XneRAbOK58wBGvCW0e2Ia84MGBv89V6yjBfWyg3E0QgdEfsUVp1mFMg_ZVuOjMPwnNN7hLgllAizgUMhDxpRwHwwz8uujMNm-ZH9JTE-tpLtbGnCHgbcc8xzA" charset="UTF-8"></script><style>
     :root {
       --color-cream: #F4F0EA;       /* Молочный / Слоновая кость */
       --color-emerald: #1B3B2B;     /* Глубокий изумрудно-хвойный */
@@ -125,6 +125,12 @@
       transform: scale(1.03);
     }
 
+    .jp-header-right {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+    }
+
     .jp-nav-links {
       display: flex;
       gap: 2rem;
@@ -140,6 +146,45 @@
 
     .jp-nav-links a:hover {
       color: var(--color-cream);
+    }
+
+    /* Переключатель языков */
+    .jp-lang-switcher {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      border-left: 1px solid rgba(244, 240, 234, 0.2);
+      padding-left: 1.5rem;
+    }
+
+    .jp-lang-btn {
+      background: none;
+      border: none;
+      color: #94a3b8;
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      padding: 0.2rem 0.4rem;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+    }
+
+    .jp-lang-btn:hover {
+      color: var(--color-cream);
+    }
+
+    .jp-lang-btn.active {
+      color: var(--color-cream);
+      border-bottom: 1px solid var(--color-bordeaux);
+    }
+
+    .jp-lang-divider {
+      color: rgba(244, 240, 234, 0.2);
+      user-select: none;
     }
 
     /* Hero Section */
@@ -267,6 +312,7 @@
       display: flex;
       align-items: center;
       padding: 0 4rem;
+      transition: background-position 0.1s ease-out;
     }
 
     .jp-about-overlay {
@@ -314,7 +360,9 @@
       }
     }
 
+
     .jp-about-photo-wrapper {
+      position: relative;
       width: 100%;
       height: 520px;
       border: 1px solid rgba(244, 240, 234, 0.25);
@@ -324,12 +372,102 @@
       animation: jpPhotoGlow 6s ease-in-out infinite;
     }
 
-    .jp-about-photo-wrapper img {
+    .jp-about-photo-wrapper img,
+    .jp-about-photo-wrapper video {
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: center 20%;
+      display: block;
     }
+
+    .jp-about-photo-wrapper video {
+      display: none;
+      background: #0d1612;
+    }
+
+    .jp-about-photo-wrapper.is-playing img,
+    .jp-about-photo-wrapper.is-playing .jp-video-trigger {
+      display: none;
+    }
+
+    .jp-about-photo-wrapper.is-playing video {
+      display: block;
+    }
+
+    .jp-video-trigger {
+      position: absolute;
+      bottom: 1.25rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      padding: 0.65rem 1.25rem;
+      background: rgba(18, 16, 19, 0.82);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(244, 240, 234, 0.35);
+      border-radius: 2px;
+      color: var(--color-cream);
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.35s ease;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.55);
+      z-index: 3;
+    }
+
+    .jp-video-trigger:hover {
+      background: var(--color-bordeaux);
+      border-color: rgba(244, 240, 234, 0.7);
+      transform: translateX(-50%) translateY(-2px);
+      box-shadow: 0 10px 28px rgba(88, 24, 37, 0.7);
+    }
+
+    .jp-video-play-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 1px solid rgba(244, 240, 234, 0.6);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+      padding-left: 2px;
+      background: rgba(244, 240, 234, 0.1);
+    }
+
+    .jp-video-close {
+      display: none;
+      position: absolute;
+      top: 0.75rem;
+      right: 0.75rem;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(18, 16, 19, 0.75);
+      border: 1px solid rgba(244, 240, 234, 0.35);
+      color: var(--color-cream);
+      font-size: 1rem;
+      line-height: 1;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      z-index: 4;
+      transition: background 0.3s ease;
+    }
+
+    .jp-video-close:hover {
+      background: var(--color-bordeaux);
+    }
+
+    .jp-about-photo-wrapper.is-playing .jp-video-close {
+      display: inline-flex;
+    }
+
 
     .jp-about-text {
       padding: 0;
@@ -578,22 +716,35 @@
       .jp-about-grid { grid-template-columns: 1fr; gap: 2rem; }
       .jp-services-grid { grid-template-columns: 1fr; }
       .jp-nav-links { display: none; }
+      .jp-lang-switcher {
+        border-left: none;
+        padding-left: 0;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- Навигационная шапка c logo.png -->
+  <!-- Навигационная шапка c logo.png и переключателем языков -->
   <header class="jp-header">
     <div class="jp-header-container">
       <a href="#" class="jp-logo-link">
         <img src="logo.png" alt="J.P." class="jp-logo-img">
       </a>
-      <nav class="jp-nav-links">
-        <a href="#jp-about">О проводнике</a>
-        <a href="#jp-services">Услуги</a>
-        <a href="#jp-reviews">Отзывы</a>
-      </nav>
+      <div class="jp-header-right">
+        <nav class="jp-nav-links">
+          <a href="#jp-about" data-i18n="nav_about">О проводнике</a>
+          <a href="#jp-services" data-i18n="nav_services">Услуги</a>
+          <a href="#jp-reviews" data-i18n="nav_reviews">Отзывы</a>
+        </nav>
+        <div class="jp-lang-switcher" aria-label="Language switcher">
+          <button class="jp-lang-btn active" data-lang="ru">RU</button>
+          <span class="jp-lang-divider">/</span>
+          <button class="jp-lang-btn" data-lang="en">EN</button>
+          <span class="jp-lang-divider">/</span>
+          <button class="jp-lang-btn" data-lang="cz">CZ</button>
+        </div>
+      </div>
     </div>
   </header>
 
@@ -601,10 +752,10 @@
   <section class="jp-hero jp-reveal">
     <div class="jp-hero-overlay"></div>
     <div class="jp-hero-content">
-      <div class="jp-hero-subtitle">Консультации & Таро</div>
-      <h1 class="jp-hero-title">Ответы на ключевые вопросы и восполнение ресурса</h1>
-      <p class="jp-hero-description">Персональные расклады и энергетические практики в формате конфиденциального личного диалога.</p>
-      <a href="#jp-services" class="jp-btn-primary">Выбрать услугу</a>
+      <div class="jp-hero-subtitle" data-i18n="hero_subtitle">Консультации & Таро</div>
+      <h1 class="jp-hero-title" data-i18n="hero_title">Ответы на ключевые вопросы и восполнение ресурса</h1>
+      <p class="jp-hero-description" data-i18n="hero_desc">Персональные расклады и энергетические практики в формате конфиденциального личного диалога.</p>
+      <a href="#jp-services" class="jp-btn-primary" data-i18n="hero_btn">Выбрать услугу</a>
     </div>
   </section>
 
@@ -614,33 +765,39 @@
     <div class="jp-about-container">
       <div class="jp-about-grid">
         
-        <!-- Левая колонка: Фотография Юли -->
-        <div class="jp-about-photo-wrapper">
-          <img src="julia.jpg" alt="Юля — проводник" onerror="this.style.display='none'; this.parentNode.innerText='[ Фотография Юли ]';">
+        <!-- Левая колонка: Фотография и видеоприветствие Юли -->
+        <div class="jp-about-photo-wrapper" id="jp-about-media">
+          <img src="julia.jpg" alt="Юля — проводник" onerror="this.style.display='none';">
+          <video id="jp-greeting-video" src="julia-greeting.mp4" poster="julia.jpg" controls playsinline preload="metadata"></video>
+          <button type="button" class="jp-video-trigger" id="jp-video-play-btn">
+            <span class="jp-video-play-icon">&#9654;</span>
+            <span data-i18n="about_video_btn">Видеоприветствие</span>
+          </button>
+          <button type="button" class="jp-video-close" id="jp-video-close-btn" aria-label="Close video">&times;</button>
         </div>
 
         <!-- Правая колонка: Заголовок, описание и принципы -->
         <div class="jp-about-text">
-          <h2 class="jp-section-title-about">Ваш проводник — Юля</h2>
-          <p>В своей работе я объединяю аналитический подход тарологии и глубинную работу с практиками очищения. Моя задача — помочь вам обрести ясность в сложных ситуациях и вернуть внутреннюю опору.</p>
-          <p>Работа строится без запугивания и шаблонных трактовок. Каждая сессия — это деликатный разбор вашей индивидуальной истории.</p>
+          <h2 class="jp-section-title-about" data-i18n="about_title">Ваш проводник — Юля</h2>
+          <p data-i18n="about_p1">В своей работе я объединяю аналитический подход тарологии и глубинную работу с практиками очищения. Моя задача — помочь вам обрести ясность в сложных ситуациях и вернуть внутреннюю опору.</p>
+          <p data-i18n="about_p2">Работа строится без запугивания и шаблонных трактовок. Каждая сессия — это деликатный разбор вашей индивидуальной истории.</p>
           
           <div class="jp-principles">
             <div class="jp-principle-item">
-              <div class="jp-principle-title">Конфиденциальность</div>
-              <div class="jp-principle-desc" style="font-size: 0.9rem; color: #a3b8ac;">Полное сохранение тайны вашего обращения.</div>
+              <div class="jp-principle-title" data-i18n="prin1_title">Конфиденциальность</div>
+              <div class="jp-principle-desc" style="font-size: 0.9rem; color: #a3b8ac;" data-i18n="prin1_desc">Полное сохранение тайны вашего обращения.</div>
             </div>
             <div class="jp-principle-item">
-              <div class="jp-principle-title">Глубина и Индивидуальность</div>
-              <div class="jp-principle-desc" style="font-size: 0.9rem; color: #a3b8ac;">Персональный разбор без быстрых готовых шаблонов.</div>
+              <div class="jp-principle-title" data-i18n="prin2_title">Глубина и Индивидуальность</div>
+              <div class="jp-principle-desc" style="font-size: 0.9rem; color: #a3b8ac;" data-i18n="prin2_desc">Персональный разбор без быстрых готовых шаблонов.</div>
             </div>
             <div class="jp-principle-item">
-              <div class="jp-principle-title">Бережность</div>
-              <div class="jp-principle-desc" style="font-size: 0.9rem; color: #a3b8ac;">Экологичная работа с чувствительными темами и энергией.</div>
+              <div class="jp-principle-title" data-i18n="prin3_title">Бережность</div>
+              <div class="jp-principle-desc" style="font-size: 0.9rem; color: #a3b8ac;" data-i18n="prin3_desc">Экологичная работа с чувствительными темами и энергией.</div>
             </div>
           </div>
 
-          <a href="#jp-services" class="jp-btn-secondary">Перейти к услугам</a>
+          <a href="#jp-services" class="jp-btn-secondary" data-i18n="about_btn">Перейти к услугам</a>
         </div>
 
       </div>
@@ -650,54 +807,54 @@
   <!-- Services Section -->
   <section class="jp-services jp-reveal" id="jp-services">
     <div class="jp-container">
-      <h2 class="jp-section-title">Услуги и форматы</h2>
+      <h2 class="jp-section-title" data-i18n="services_title">Услуги и форматы</h2>
       
       <div class="jp-services-grid">
         <!-- Услуга 1 -->
         <div class="jp-service-card">
           <div>
-            <h3 class="jp-service-title">Экспресс-расклад</h3>
-            <p class="jp-service-desc">Быстрый и точный ответ на 1–2 конкретных вопроса: выбор решения, текущее состояние дел или совет карт.</p>
+            <h3 class="jp-service-title" data-i18n="srv1_title">Экспресс-расклад</h3>
+            <p class="jp-service-desc" data-i18n="srv1_desc">Быстрый и точный ответ на 1–2 конкретных вопроса: выбор решения, текущее состояние дел или совет карт.</p>
           </div>
           <div>
-            <div class="jp-service-format">Формат: Голосовые сообщения + фото карт в Telegram</div>
-            <a href="https://t.me/jp_taro?text=Здравствуйте,%20Юля!%20Хочу%20записаться%20на%20Экспресс-расклад" target="_blank" class="jp-btn-card">Записаться в Telegram</a>
+            <div class="jp-service-format" data-i18n="srv1_format">Формат: Голосовые сообщения + фото карт в Telegram</div>
+            <a id="tg-link-1" href="https://t.me/jp_taro?text=Здравствуйте,%20Юля!%20Хочу%20записаться%20на%20Экспресс-расклад" target="_blank" class="jp-btn-card" data-i18n="btn_book">Записаться в Telegram</a>
           </div>
         </div>
 
         <!-- Услуга 2 -->
         <div class="jp-service-card">
           <div>
-            <h3 class="jp-service-title">Индивидуальная консультация</h3>
-            <p class="jp-service-desc">Детальный разбор сложной ситуации или конкретной сферы жизни (отношения, карьера, кризис). Анализ причин и перспектив.</p>
+            <h3 class="jp-service-title" data-i18n="srv2_title">Индивидуальная консультация</h3>
+            <p class="jp-service-desc" data-i18n="srv2_desc">Детальный разбор сложной ситуации или конкретной сферы жизни (отношения, карьера, кризис). Анализ причин и перспектив.</p>
           </div>
           <div>
-            <div class="jp-service-format">Формат: Аудио/видео-разбор, персональный отчет или онлайн-встреча</div>
-            <a href="https://t.me/jp_taro?text=Здравствуйте,%20Юля!%20Хочу%20записаться%20на%20Индивидуальную%20консультацию" target="_blank" class="jp-btn-card">Записаться в Telegram</a>
+            <div class="jp-service-format" data-i18n="srv2_format">Формат: Аудио/видео-разбор, персональный отчет или онлайн-встреча</div>
+            <a id="tg-link-2" href="https://t.me/jp_taro?text=Здравствуйте,%20Юля!%20Хочу%20записаться%20на%20Индивидуальную%20консультацию" target="_blank" class="jp-btn-card" data-i18n="btn_book">Записаться в Telegram</a>
           </div>
         </div>
 
         <!-- Услуга 3 -->
         <div class="jp-service-card">
           <div>
-            <h3 class="jp-service-title">Личная консультация + Чистка</h3>
-            <p class="jp-service-desc">Комплексный формат: персональный разбор вашего запроса в режиме реального времени и последующая энергетическая чистка.</p>
+            <h3 class="jp-service-title" data-i18n="srv3_title">Личная консультация + Чистка</h3>
+            <p class="jp-service-desc" data-i18n="srv3_desc">Комплексный формат: персональный разбор вашего запроса в режиме реального времени и последующая энергетическая чистка.</p>
           </div>
           <div>
-            <div class="jp-service-format">Формат: Очная встреча или онлайн-созвон</div>
-            <a href="https://t.me/jp_taro?text=Здравствуйте,%20Юля!%20Хочу%20записаться%20на%20Личную%20консультацию%20%2B%20чистку" target="_blank" class="jp-btn-card">Записаться в Telegram</a>
+            <div class="jp-service-format" data-i18n="srv3_format">Формат: Очная встреча или онлайн-созвон</div>
+            <a id="tg-link-3" href="https://t.me/jp_taro?text=Здравствуйте,%20Юля!%20Хочу%20записаться%20на%20Личную%20консультацию%20%2B%20чистку" target="_blank" class="jp-btn-card" data-i18n="btn_book">Записаться в Telegram</a>
           </div>
         </div>
 
         <!-- Услуга 4 -->
         <div class="jp-service-card">
           <div>
-            <h3 class="jp-service-title">Дистанционная чистка</h3>
-            <p class="jp-service-desc">Практика нейтрализации негативных воздействий, снятия тяжелых состояний и восстановления сил на расстоянии.</p>
+            <h3 class="jp-service-title" data-i18n="srv4_title">Дистанционная чистка</h3>
+            <p class="jp-service-desc" data-i18n="srv4_desc">Практика нейтрализации негативных воздействий, снятия тяжелых состояний и восстановления сил на расстоянии.</p>
           </div>
           <div>
-            <div class="jp-service-format">Формат: Дистанционная работа + индивидуальные рекомендации</div>
-            <a href="https://t.me/jp_taro?text=Здравствуйте,%20Юля!%20Хочу%20записаться%20на%20Дистанционную%20чистку" target="_blank" class="jp-btn-card">Записаться в Telegram</a>
+            <div class="jp-service-format" data-i18n="srv4_format">Формат: Дистанционная работа + индивидуальные рекомендации</div>
+            <a id="tg-link-4" href="https://t.me/jp_taro?text=Здравствуйте,%20Юля!%20Хочу%20записаться%20на%20Дистанционную%20чистку" target="_blank" class="jp-btn-card" data-i18n="btn_book">Записаться в Telegram</a>
           </div>
         </div>
       </div>
@@ -707,15 +864,15 @@
   <!-- Reviews Section -->
   <section class="jp-reviews jp-reveal" id="jp-reviews">
     <div class="jp-container">
-      <h2 class="jp-section-title">Отзывы</h2>
+      <h2 class="jp-section-title" data-i18n="reviews_title">Отзывы</h2>
       <div class="jp-reviews-grid">
         <div class="jp-review-card">
-          <p class="jp-review-text">«Юля обладает невероятной проницательностью. Разбор помог мне увидеть ситуацию под совершенно другим углом и найти решение, которое я не замечала долгое время.»</p>
-          <div class="jp-review-author">— Конфиденциально</div>
+          <p class="jp-review-text" data-i18n="rev1_text">«Юля обладает невероятной проницательностью. Разбор помог мне увидеть ситуацию под совершенно другим углом и найти решение, которое я не замечала долгое время.»</p>
+          <div class="jp-review-author" data-i18n="rev_author">— Конфиденциально</div>
         </div>
         <div class="jp-review-card">
-          <p class="jp-review-text">«После сессии и практики наступило такое глубокое внутреннее облегчение и ясность. Огромная благодарность за бережный подход и профессионализм.»</p>
-          <div class="jp-review-author">— Конфиденциально</div>
+          <p class="jp-review-text" data-i18n="rev2_text">«После сессии и практики наступило такое глубокое внутреннее облегчение и ясность. Огромная благодарность за бережный подход и профессионализм.»</p>
+          <div class="jp-review-author" data-i18n="rev_author">— Конфиденциально</div>
         </div>
       </div>
     </div>
@@ -723,13 +880,13 @@
 
   <!-- Footer -->
   <footer class="jp-footer">
-    <p style="font-size: 0.9rem; color: #a0aec0;">Запись на консультации и чистки производится через личные сообщения.</p>
+    <p style="font-size: 0.9rem; color: #a0aec0;" data-i18n="footer_note">Запись на консультации и чистки производится через личные сообщения.</p>
     
     <div class="jp-footer-links">
-      <a href="https://t.me/jp_taro" target="_blank">Написать в Telegram (@jp_taro)</a>
+      <a href="https://t.me/jp_taro" target="_blank" data-i18n="footer_tg">Написать в Telegram (@jp_taro)</a>
     </div>
 
-    <div class="jp-copyright">
+    <div class="jp-copyright" data-i18n="footer_copy">
       © J.P. Все права защищены.
     </div>
   </footer>
@@ -765,5 +922,245 @@
     });
   </script>
 
+  <!-- Скрипт параллакс-эффекта для блока о проводнике -->
+  <script>
+    document.addEventListener('mousemove', (e) => {
+      const aboutSection = document.getElementById('jp-about');
+      if (!aboutSection) return;
+      
+      const rect = aboutSection.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      
+      if (rect.top < windowHeight && rect.bottom > 0) {
+        const xPos = (e.clientX / window.innerWidth - 0.5) * 15;
+        const yPos = (e.clientY / window.innerHeight - 0.5) * 15;
+        
+        aboutSection.style.backgroundPosition = `calc(50% + ${xPos}px) calc(50% + ${yPos}px)`;
+      }
+    });
+  </script>
+
+  <!-- Скрипт мультиязычности (RU / EN / CZ) -->
+  <script>
+    const translations = {
+      ru: {
+        page_title: "J.P. — Консультации & Таро",
+        nav_about: "О проводнике",
+        nav_services: "Услуги",
+        nav_reviews: "Отзывы",
+        hero_subtitle: "Консультации & Таро",
+        hero_title: "Ответы на ключевые вопросы и восполнение ресурса",
+        hero_desc: "Персональные расклады и энергетические практики в формате конфиденциального личного диалога.",
+        hero_btn: "Выбрать услугу",
+        about_title: "Ваш проводник — Юля",
+        about_p1: "В своей работе я объединяю аналитический подход тарологии и глубинную работу с практиками очищения. Моя задача — помочь вам обрести ясность в сложных ситуациях и вернуть внутреннюю опору.",
+        about_p2: "Работа строится без запугивания и шаблонных трактовок. Каждая сессия — это деликатный разбор вашей индивидуальной истории.",
+        prin1_title: "Конфиденциальность",
+        prin1_desc: "Полное сохранение тайны вашего обращения.",
+        prin2_title: "Глубина и Индивидуальность",
+        prin2_desc: "Персональный разбор без быстрых готовых шаблонов.",
+        prin3_title: "Бережность",
+        prin3_desc: "Экологичная работа с чувствительными темами и энергией.",
+        about_btn: "Перейти к услугам",
+        about_video_btn: "Видеоприветствие",
+        services_title: "Услуги и форматы",
+        srv1_title: "Экспресс-расклад",
+        srv1_desc: "Быстрый и точный ответ на 1–2 конкретных вопроса: выбор решения, текущее состояние дел или совет карт.",
+        srv1_format: "Формат: Голосовые сообщения + фото карт в Telegram",
+        srv2_title: "Индивидуальная консультация",
+        srv2_desc: "Детальный разбор сложной ситуации или конкретной сферы жизни (отношения, карьера, кризис). Анализ причин и перспектив.",
+        srv2_format: "Формат: Аудио/видео-разбор, персональный отчет или онлайн-встреча",
+        srv3_title: "Личная консультация + Чистка",
+        srv3_desc: "Комплексный формат: персональный разбор вашего запроса в режиме реального времени и последующая энергетическая чистка.",
+        srv3_format: "Формат: Очная встреча или онлайн-созвон",
+        srv4_title: "Дистанционная чистка",
+        srv4_desc: "Практика нейтрализации негативных воздействий, снятия тяжелых состояний и восстановления сил на расстоянии.",
+        srv4_format: "Формат: Дистанционная работа + индивидуальные рекомендации",
+        btn_book: "Записаться в Telegram",
+        reviews_title: "Отзывы",
+        rev1_text: "«Юля обладает невероятной проницательностью. Разбор помог мне увидеть ситуацию под совершенно другим углом и найти решение, которое я не замечала долгое время.»",
+        rev2_text: "«После сессии и практики наступило такое глубокое внутреннее облегчение и ясность. Огромная благодарность за бережный подход и профессионализм.»",
+        rev_author: "— Конфиденциально",
+        footer_note: "Запись на консультации и чистки производится через личные сообщения.",
+        footer_tg: "Написать в Telegram (@jp_taro)",
+        footer_copy: "© J.P. Все права защищены.",
+        tg_msg_1: "Здравствуйте, Юля! Хочу записаться на Экспресс-расклад",
+        tg_msg_2: "Здравствуйте, Юля! Хочу записаться на Индивидуальную консультацию",
+        tg_msg_3: "Здравствуйте, Юля! Хочу записаться на Личную консультацию + чистку",
+        tg_msg_4: "Здравствуйте, Юля! Хочу записаться на Дистанционную чистку"
+      },
+      en: {
+        page_title: "J.P. — Tarot & Consultations",
+        nav_about: "About Guide",
+        nav_services: "Services",
+        nav_reviews: "Testimonials",
+        hero_subtitle: "Consultations & Tarot",
+        hero_title: "Answers to Key Questions & Energy Restoration",
+        hero_desc: "Personal Tarot readings and energy cleansing practices in a format of a confidential one-on-one dialogue.",
+        hero_btn: "Choose a Service",
+        about_title: "Your Guide — Julia",
+        about_p1: "In my practice, I combine an analytical approach to Tarot with deep energy cleansing rituals. My goal is to help you gain clarity in complex situations and restore your inner grounding.",
+        about_p2: "My work is free from fear-mongering or generic templates. Each session is a delicate, tailored exploration of your personal story.",
+        prin1_title: "Confidentiality",
+        prin1_desc: "Complete privacy and discretion regarding your inquiry.",
+        prin2_title: "Depth & Individuality",
+        prin2_desc: "Tailored in-depth analysis without rushed, cookie-cutter interpretations.",
+        prin3_title: "Gentle Care",
+        prin3_desc: "Ecological and respectful work with sensitive topics and personal energy.",
+        about_btn: "Explore Services",
+        about_video_btn: "Video Greeting",
+        services_title: "Services & Formats",
+        srv1_title: "Express Reading",
+        srv1_desc: "A quick, accurate answer to 1–2 specific questions: making a choice, assessing the current situation, or seeking guidance from the cards.",
+        srv1_format: "Format: Voice messages + card photos via Telegram",
+        srv2_title: "Individual Consultation",
+        srv2_desc: "Detailed analysis of a complex situation or specific life area (relationships, career, personal crisis). Root causes and future outlook.",
+        srv2_format: "Format: Audio/video breakdown, personal report, or online call",
+        srv3_title: "Personal Session + Cleansing",
+        srv3_desc: "Comprehensive format: real-time personal reading of your request followed by a deep energy cleansing practice.",
+        srv3_format: "Format: In-person meeting or live online video call",
+        srv4_title: "Remote Energy Cleansing",
+        srv4_desc: "Practice aimed at neutralizing negative influences, relieving heavy emotional states, and restoring vitality from a distance.",
+        srv4_format: "Format: Remote energy work + personalized recommendations",
+        btn_book: "Book via Telegram",
+        reviews_title: "Testimonials",
+        rev1_text: "“Julia possesses incredible insight. The reading helped me view my situation from a completely new angle and find a solution I had overlooked for a long time.”",
+        rev2_text: "“After the session and cleansing practice, I felt such profound inner relief and clarity. Deepest gratitude for the gentle approach and professionalism.”",
+        rev_author: "— Confidential",
+        footer_note: "Bookings for consultations and cleansing sessions are arranged via direct messages.",
+        footer_tg: "Message on Telegram (@jp_taro)",
+        footer_copy: "© J.P. All rights reserved.",
+        tg_msg_1: "Hello Julia! I would like to book an Express Reading",
+        tg_msg_2: "Hello Julia! I would like to book an Individual Consultation",
+        tg_msg_3: "Hello Julia! I would like to book a Personal Session + Cleansing",
+        tg_msg_4: "Hello Julia! I would like to book a Remote Energy Cleansing"
+      },
+      cz: {
+        page_title: "J.P. — Konzultace & Tarot",
+        nav_about: "O průvodkyni",
+        nav_services: "Služby",
+        nav_reviews: "Reference",
+        hero_subtitle: "Konzultace & Tarot",
+        hero_title: "Odpovědi na klíčové otázky a obnovení vnitřní síly",
+        hero_desc: "Osobní výklady karet a energetické očistné praktiky formou důvěrného individuálního rozhovoru.",
+        hero_btn: "Vybrat službu",
+        about_title: "Vaše průvodkyně — Julie",
+        about_p1: "Ve své práci spojuji analytický přístup k tarologii s hlubokou prací s očistnými praktikami. Mým cílem je pomoci vám získat jasnost v náročných situacích a vrátit vám vnitřní oporu.",
+        about_p2: "Má práce je bez strašení a šablonovitých výkladů. Každé sezení je citlivým rozborem vašeho jedinečného příběhu.",
+        prin1_title: "Důvěrnost",
+        prin1_desc: "Naprosté zachování diskrétnosti a tajemství vašeho dotazu.",
+        prin2_title: "Hloubka a individualita",
+        prin2_desc: "Osobní rozbor na míru bez rychlých hotových šablon.",
+        prin3_title: "Ohleduplnost",
+        prin3_desc: "Šetrná a ekologická práce s citlivými tématy a energií.",
+        about_btn: "Přejít ke službám",
+        about_video_btn: "Videopozdrav",
+        services_title: "Služby a formáty",
+        srv1_title: "Expresní výklad",
+        srv1_desc: "Rychlá a přesná odpověď na 1–2 konkrétní otázky: rozhodování, aktuální stav věcí nebo rada karet.",
+        srv1_format: "Formát: Hlasové zprávy + fotografie karet na Telegramu",
+        srv2_title: "Individuální konzultace",
+        srv2_desc: "Detailní rozbor složité situace nebo konkrétní oblasti života (vztahy, kariéra, krize). Analýza příčin a perspektiv.",
+        srv2_format: "Formát: Audio/video rozbor, osobní zpráva nebo online hovor",
+        srv3_title: "Osobní konzultace + Očista",
+        srv3_desc: "Komplexní formát: osobní rozbor vašeho dotazu v reálném čase a následná energetická očista.",
+        srv3_format: "Formát: Osobní setkání nebo online videohovor",
+        srv4_title: "Energetická očista na dálku",
+        srv4_desc: "Praktika zaměřená na neutralizaci negativních vlivů, uvolnění těžkých stavů a obnovu sil na dálku.",
+        srv4_format: "Formát: Práce na dálku + individuální doporučení",
+        btn_book: "Objednat přes Telegram",
+        reviews_title: "Reference",
+        rev1_text: "„Julie má neuvěřitelný vhled. Výklad mi pomohl podívat se na situaci ze zcela jiného úhlu a najít řešení, které jsem dlouho přehlížela.“",
+        rev2_text: "„Po konzultaci a očistné praktice přišla tak hluboká vnitřní úleva a jasnost. Velké poděkování za citlivý přístup a profesionalitu.“",
+        rev_author: "— Důvěrné",
+        footer_note: "Objednávky na konzultace a očisty probíhají prostřednictvím soukromých zpráv.",
+        footer_tg: "Napsat na Telegram (@jp_taro)",
+        footer_copy: "© J.P. Všechna práva vyhrazena.",
+        tg_msg_1: "Dobrý den, Julie! Rád(a) bych se objednal(a) na Expresní výklad",
+        tg_msg_2: "Dobrý den, Julie! Rád(a) bych se objednal(a) na Individuální konzultaci",
+        tg_msg_3: "Dobrý den, Julie! Rád(a) bych se objednal(a) na Osobní konzultaci + očistu",
+        tg_msg_4: "Dobrý den, Julie! Rád(a) bych se objednal(a) na Energetickou očistu na dálku"
+      }
+    };
+
+    function setLanguage(lang) {
+      if (!translations[lang]) return;
+
+      document.documentElement.lang = lang;
+      document.title = translations[lang].page_title;
+
+      // Обновляем все текстовые элементы
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang][key]) {
+          el.textContent = translations[lang][key];
+        }
+      });
+
+      // Обновляем предзаполненные сообщения для Telegram
+      for (let i = 1; i <= 4; i++) {
+        const link = document.getElementById(`tg-link-${i}`);
+        if (link && translations[lang][`tg_msg_${i}`]) {
+          link.href = `https://t.me/jp_taro?text=${encodeURIComponent(translations[lang][`tg_msg_${i}`])}`;
+        }
+      }
+
+      // Обновляем активную кнопку в шапке
+      document.querySelectorAll('.jp-lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+      });
+
+      // Сохраняем выбор пользователя
+      localStorage.setItem('jp_site_lang', lang);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Вешаем обработчики на кнопки переключения языка
+      document.querySelectorAll('.jp-lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          setLanguage(btn.getAttribute('data-lang'));
+        });
+      });
+
+      // Проверяем сохраненный язык или язык браузера
+      const savedLang = localStorage.getItem('jp_site_lang');
+      if (savedLang && translations[savedLang]) {
+        setLanguage(savedLang);
+      } else {
+        const browserLang = navigator.language.slice(0, 2).toLowerCase();
+        if (browserLang === 'cs' || browserLang === 'cz') {
+          setLanguage('cz');
+        } else if (browserLang === 'en') {
+          setLanguage('en');
+        }
+      }
+    });
+  </script>
+
+  <!-- Скрипт видеоприветствия в блоке о проводнике -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const mediaWrapper = document.getElementById('jp-about-media');
+      const video = document.getElementById('jp-greeting-video');
+      const playBtn = document.getElementById('jp-video-play-btn');
+      const closeBtn = document.getElementById('jp-video-close-btn');
+
+      if (!mediaWrapper || !video || !playBtn || !closeBtn) return;
+
+      playBtn.addEventListener('click', () => {
+        mediaWrapper.classList.add('is-playing');
+        video.play().catch(() => {});
+      });
+
+      const closeVideo = () => {
+        video.pause();
+        video.currentTime = 0;
+        mediaWrapper.classList.remove('is-playing');
+      };
+
+      closeBtn.addEventListener('click', closeVideo);
+      video.addEventListener('ended', closeVideo);
+    });
+  </script>
 </body>
 </html>
