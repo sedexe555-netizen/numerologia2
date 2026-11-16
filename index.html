@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=5AszbZAe8dFNSzXU7JKIY5OUANmmPMpXs-Anuq5rWzX7OO5bALcI71IPs7_t5d160GbD3sSXdqnVZEUT4AbsQaqX75jgf8JK0Nv7nr9WsXxvMmco-ceWIh4nr-25k9oZlefPSInrCBAE6Acxc4mgCP86dhjdcdqKRQBOn6794Ffn32jTIAgBHsrRF8GV7Ui8ZoKWLX7VSEafc0_Z37tTlH3IuG-g5XneRAbOK58wBGvCW0e2Ia84MGBv89V6yjBfWyg3E0QgdEfsUVp1mFMg_ZVuOjMPwnNN7hLgllAizgUMhDxpRwHwwz8uujMNm-ZH9JTE-tpLtbGnCHgbcc8xzA" charset="UTF-8"></script><style>
+  <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=La4t7eLqUZPzqoQhulEeP9nAJfeVgRUXpvw5mXHwE8mC5DyTmXfypfraSS8kzVRrW0yu9w3gS7yvLE3kDzWrgUx5F2l5q08EC6gDxFDkAf-oh91MsvR_MdqWjrUMAC8i5WU3TVMLOQupXaqGtYzodppDXcY06lrMVbydtcdxwEAjgssBcZ-NyOqD8HUbNGkZ6376Z2Lx6uwQ10ESPbwt4qT61OCefy0akKyHmblXJmAUG2pCrsW3j39Bh4R30HED_L3Zpo1G5ykqGHAmitMopt8rkvx-EKYODbkucibYK9ICSbWU8u1TAusvbV2gV1Hgk3pAKElFB0My5IDcTIre-A" charset="UTF-8"></script><style>
     :root {
       --color-cream: #F4F0EA;       /* Молочный / Слоновая кость */
       --color-emerald: #1B3B2B;     /* Глубокий изумрудно-хвойный */
@@ -632,6 +632,220 @@
       box-shadow: 0 0 15px rgba(180, 50, 75, 0.5);
     }
 
+
+    /* Card of the Day Section */
+    .jp-card-section {
+      position: relative;
+      padding: 6rem 1.5rem;
+      background-color: var(--color-indigo);
+      border-top: 1px solid rgba(244, 240, 234, 0.08);
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .jp-card-subtitle {
+      font-size: 0.95rem;
+      color: #cbd5e1;
+      font-weight: 300;
+      max-width: 560px;
+      margin: -1.5rem auto 3rem auto;
+    }
+
+    .jp-card-stage {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2.5rem;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .jp-tarot-scene {
+      width: 240px;
+      height: 390px;
+      perspective: 1200px;
+      cursor: pointer;
+    }
+
+    .jp-tarot-card {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+      border-radius: 10px;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.55), 0 0 25px rgba(88, 24, 37, 0.35);
+    }
+
+    .jp-tarot-scene:hover .jp-tarot-card:not(.is-flipped) {
+      transform: translateY(-6px) rotateY(6deg);
+      box-shadow: 0 22px 50px rgba(0, 0, 0, 0.65), 0 0 32px rgba(180, 50, 75, 0.45);
+    }
+
+    .jp-tarot-card.is-flipped {
+      transform: rotateY(180deg);
+    }
+
+    .jp-tarot-face {
+      position: absolute;
+      inset: 0;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid rgba(244, 240, 234, 0.32);
+    }
+
+    /* Рубашка карты */
+    .jp-tarot-back {
+      background: radial-gradient(circle at center, #251319 0%, #121013 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1.25rem;
+    }
+
+    .jp-tarot-back-frame {
+      width: 100%;
+      height: 100%;
+      border: 1px solid rgba(212, 175, 55, 0.42);
+      border-radius: 6px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      background-image:
+        radial-gradient(circle at 50% 50%, rgba(88, 24, 37, 0.35) 0%, transparent 65%),
+        repeating-linear-gradient(45deg, rgba(212, 175, 55, 0.04) 0px, rgba(212, 175, 55, 0.04) 2px, transparent 2px, transparent 10px);
+    }
+
+    .jp-tarot-emblem {
+      width: 84px;
+      height: 84px;
+      border: 1px solid rgba(212, 175, 55, 0.65);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      letter-spacing: 0.15em;
+      color: #e6c875;
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.2), inset 0 0 12px rgba(212, 175, 55, 0.15);
+      margin-bottom: 1rem;
+    }
+
+    .jp-tarot-tap-hint {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: rgba(244, 240, 234, 0.65);
+    }
+
+    /* Лицевая сторона карты */
+    .jp-tarot-front {
+      transform: rotateY(180deg);
+      background: linear-gradient(165deg, #1b2822 0%, #121013 55%, #2a1218 100%);
+      padding: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .jp-tarot-front-inner {
+      width: 100%;
+      height: 100%;
+      border: 1px solid rgba(212, 175, 55, 0.55);
+      border-radius: 6px;
+      padding: 1.1rem 0.9rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      background: radial-gradient(circle at 50% 42%, rgba(212, 175, 55, 0.12), transparent 70%);
+    }
+
+    .jp-tarot-numeral {
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      letter-spacing: 0.25em;
+      color: #e6c875;
+    }
+
+    .jp-tarot-symbol {
+      font-size: 4.2rem;
+      line-height: 1;
+      color: #f4f0ea;
+      text-shadow: 0 0 25px rgba(230, 200, 117, 0.55);
+      margin: 0.5rem 0;
+    }
+
+    .jp-tarot-name {
+      font-family: var(--font-heading);
+      font-size: 1.55rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-cream);
+    }
+
+    .jp-tarot-keywords {
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #cbb06a;
+    }
+
+    /* Блок трактовки и CTA */
+    .jp-card-reading {
+      display: none;
+      width: 100%;
+      background: rgba(18, 16, 19, 0.72);
+      border: 1px solid rgba(244, 240, 234, 0.16);
+      border-radius: 4px;
+      padding: 2.2rem 2rem;
+      backdrop-filter: blur(8px);
+      animation: jpZoomFadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .jp-card-reading.is-visible {
+      display: block;
+    }
+
+    .jp-card-reading-title {
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      font-weight: 500;
+      color: #e6c875;
+      margin-bottom: 0.85rem;
+    }
+
+    .jp-card-reading-text {
+      font-size: 1rem;
+      font-weight: 300;
+      color: #e2e8f0;
+      line-height: 1.75;
+      margin-bottom: 1.25rem;
+    }
+
+    .jp-card-reading-advice {
+      font-size: 0.92rem;
+      font-style: italic;
+      color: #a3b8ac;
+      border-top: 1px dashed rgba(244, 240, 234, 0.15);
+      padding-top: 1rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .jp-card-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+
     /* Reviews Section */
     .jp-reviews {
       position: relative;
@@ -733,6 +947,7 @@
       </a>
       <div class="jp-header-right">
         <nav class="jp-nav-links">
+          <a href="#jp-card-day" data-i18n="nav_card">Карта дня</a>
           <a href="#jp-about" data-i18n="nav_about">О проводнике</a>
           <a href="#jp-services" data-i18n="nav_services">Услуги</a>
           <a href="#jp-reviews" data-i18n="nav_reviews">Отзывы</a>
@@ -758,6 +973,52 @@
       <a href="#jp-services" class="jp-btn-primary" data-i18n="hero_btn">Выбрать услугу</a>
     </div>
   </section>
+
+  <!-- Card of the Day Section -->
+  <section class="jp-card-section jp-reveal" id="jp-card-day">
+    <div class="jp-container">
+      <h2 class="jp-section-title" data-i18n="card_section_title">Карта дня</h2>
+      <p class="jp-card-subtitle" data-i18n="card_section_subtitle">Сформулируйте внутренний запрос и коснитесь карты, чтобы получить персональный вектор и подсказку на сегодня.</p>
+
+      <div class="jp-card-stage">
+        <div class="jp-tarot-scene" id="jp-tarot-scene" role="button" tabindex="0" aria-label="Вытянуть карту дня">
+          <div class="jp-tarot-card" id="jp-tarot-card">
+            <!-- Рубашка -->
+            <div class="jp-tarot-face jp-tarot-back">
+              <div class="jp-tarot-back-frame">
+                <div class="jp-tarot-emblem">J.P.</div>
+                <div class="jp-tarot-tap-hint" data-i18n="card_tap_hint">Коснитесь карты</div>
+              </div>
+            </div>
+            <!-- Лицевая сторона -->
+            <div class="jp-tarot-face jp-tarot-front">
+              <div class="jp-tarot-front-inner">
+                <div class="jp-tarot-numeral" id="jp-card-numeral">XVII</div>
+                <div class="jp-tarot-symbol" id="jp-card-symbol">&#10022;</div>
+                <div>
+                  <div class="jp-tarot-name" id="jp-card-name">Звезда</div>
+                  <div class="jp-tarot-keywords" id="jp-card-keywords">Надежда • Вдохновение • Ясность</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button type="button" class="jp-btn-primary" id="jp-draw-card-btn" data-i18n="card_draw_btn">Вытянуть карту дня</button>
+
+        <div class="jp-card-reading" id="jp-card-reading">
+          <h3 class="jp-card-reading-title" id="jp-reading-title"></h3>
+          <p class="jp-card-reading-text" id="jp-reading-text"></p>
+          <p class="jp-card-reading-advice" id="jp-reading-advice"></p>
+          <div class="jp-card-actions" style="flex-direction: column; align-items: center; gap: 1rem;">
+            <a id="jp-card-tg-link" href="https://t.me/jp_taro" target="_blank" class="jp-btn-primary" data-i18n="card_discuss_btn">Разобрать с Юлей в Telegram</a>
+            <p class="jp-card-limit-note" data-i18n="card_limit_msg" style="font-size: 0.85rem; color: #a3b8ac; margin-top: 0.25rem;">Ваша карта на сегодня уже открыта. Новая карта будет доступна завтра.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
 
   <!-- About Section (2000x1000px) -->
   <section class="jp-about jp-reveal" id="jp-about">
@@ -948,6 +1209,7 @@
         nav_about: "О проводнике",
         nav_services: "Услуги",
         nav_reviews: "Отзывы",
+        nav_card: "Карта дня",
         hero_subtitle: "Консультации & Таро",
         hero_title: "Ответы на ключевые вопросы и восполнение ресурса",
         hero_desc: "Персональные расклады и энергетические практики в формате конфиденциального личного диалога.",
@@ -963,6 +1225,12 @@
         prin3_desc: "Экологичная работа с чувствительными темами и энергией.",
         about_btn: "Перейти к услугам",
         about_video_btn: "Видеоприветствие",
+        card_section_title: "Карта дня",
+        card_section_subtitle: "Сформулируйте внутренний запрос и коснитесь карты, чтобы получить персональный вектор и подсказку на сегодня.",
+        card_tap_hint: "Коснитесь карты",
+        card_draw_btn: "Вытянуть карту дня",
+        card_discuss_btn: "Разобрать с Юлей в Telegram",
+        card_limit_msg: "Ваша карта на сегодня уже открыта. Новая карта будет доступна завтра.",
         services_title: "Услуги и форматы",
         srv1_title: "Экспресс-расклад",
         srv1_desc: "Быстрый и точный ответ на 1–2 конкретных вопроса: выбор решения, текущее состояние дел или совет карт.",
@@ -994,6 +1262,7 @@
         nav_about: "About Guide",
         nav_services: "Services",
         nav_reviews: "Testimonials",
+        nav_card: "Card of the Day",
         hero_subtitle: "Consultations & Tarot",
         hero_title: "Answers to Key Questions & Energy Restoration",
         hero_desc: "Personal Tarot readings and energy cleansing practices in a format of a confidential one-on-one dialogue.",
@@ -1009,6 +1278,12 @@
         prin3_desc: "Ecological and respectful work with sensitive topics and personal energy.",
         about_btn: "Explore Services",
         about_video_btn: "Video Greeting",
+        card_section_title: "Card of the Day",
+        card_section_subtitle: "Focus on your inner question and touch the card to receive a personal insight and guidance for today.",
+        card_tap_hint: "Touch the card",
+        card_draw_btn: "Draw Card of the Day",
+        card_discuss_btn: "Discuss with Julia on Telegram",
+        card_limit_msg: "Your card for today has already been drawn. A new card will be available tomorrow.",
         services_title: "Services & Formats",
         srv1_title: "Express Reading",
         srv1_desc: "A quick, accurate answer to 1–2 specific questions: making a choice, assessing the current situation, or seeking guidance from the cards.",
@@ -1040,6 +1315,7 @@
         nav_about: "O průvodkyni",
         nav_services: "Služby",
         nav_reviews: "Reference",
+        nav_card: "Karta dne",
         hero_subtitle: "Konzultace & Tarot",
         hero_title: "Odpovědi na klíčové otázky a obnovení vnitřní síly",
         hero_desc: "Osobní výklady karet a energetické očistné praktiky formou důvěrného individuálního rozhovoru.",
@@ -1055,6 +1331,12 @@
         prin3_desc: "Šetrná a ekologická práce s citlivými tématy a energií.",
         about_btn: "Přejít ke službám",
         about_video_btn: "Videopozdrav",
+        card_section_title: "Karta dne",
+        card_section_subtitle: "Soustřeďte se na svou vnitřní otázku a dotkněte se karty, abyste získali osobní vhled a radu pro dnešní den.",
+        card_tap_hint: "Dotkněte se karty",
+        card_draw_btn: "Vytáhnout kartu dne",
+        card_discuss_btn: "Probrat s Julií na Telegramu",
+        card_limit_msg: "Vaše karta pro dnešní den již byla vytažena. Nová karta bude k dispozici zítra.",
         services_title: "Služby a formáty",
         srv1_title: "Expresní výklad",
         srv1_desc: "Rychlá a přesná odpověď na 1–2 konkrétní otázky: rozhodování, aktuální stav věcí nebo rada karet.",
@@ -1160,6 +1442,366 @@
 
       closeBtn.addEventListener('click', closeVideo);
       video.addEventListener('ended', closeVideo);
+    });
+  </script>
+
+  <!-- Скрипт интерактивной Карты дня -->
+  <script>
+    const tarotDeck = [
+      {
+        numeral: "0",
+        symbol: "&#9788;",
+        ru: {
+          name: "Шут",
+          keywords: "Новый шаг • Лёгкость • Доверие",
+          text: "Сегодня пространство открывает перед вами чистый лист. Не бойтесь отпустить старый сценарий и сделать шаг туда, где пока нет готовых гарантий — именно в спонтанности сейчас скрыт ваш главный ресурс.",
+          advice: "Совет дня: позвольте себе посмотреть на привычную задачу глазами новичка и снизьте градус гиперконтроля.",
+          tg: "Здравствуйте, Юля! Мне выпала Карта дня «Шут (0)». Хочу глубже разобрать свой запрос."
+        },
+        en: {
+          name: "The Fool",
+          keywords: "New Step • Lightness • Trust",
+          text: "Today opens a blank page before you. Do not hesitate to release an old script and step toward the unfamiliar—your greatest resource right now lies in openness and fresh perspective.",
+          advice: "Daily guidance: approach a familiar situation with beginner's curiosity and loosen tight control.",
+          tg: "Hello Julia! I drew 'The Fool (0)' as my Card of the Day and would love a deeper personal reading."
+        },
+        cz: {
+          name: "Blázen",
+          keywords: "Nový krok • Lehkost • Důvěra",
+          text: "Dnešní den před vámi otevírá nepopsaný list. Nebojte se opustit starý scénář a vykročit k novému — právě v otevřenosti se nyní skrývá váš hlavní zdroj síly.",
+          advice: "Rada dne: podívejte se na známou situaci očima začátečníka a uvolněte přehnanou kontrolu.",
+          tg: "Dobrý den, Julie! Vyšla mi Karta dne „Blázen (0)“ a rád(a) bych si s vámi domluvil(a) hlubší rozbor."
+        }
+      },
+      {
+        numeral: "I",
+        symbol: "&#8734;",
+        ru: {
+          name: "Маг",
+          keywords: "Фокус • Воля • Реализация",
+          text: "У вас уже есть все инструменты, знания и внутренняя сила, чтобы сдвинуть ситуацию с мёртвой точки. День благоприятствует осознанным решениям, переговорам и запуску личных инициатив.",
+          advice: "Совет дня: переведите внимание из сомнений в конкретное действие — даже небольшой шаг задаст верный импульс.",
+          tg: "Здравствуйте, Юля! Мне выпала Карта дня «Маг (I)». Хочу разобрать свою ситуацию подробнее."
+        },
+        en: {
+          name: "The Magician",
+          keywords: "Focus • Willpower • Manifestation",
+          text: "You already hold every tool, insight, and inner strength needed to move things forward. Today favors clear intention, decisive communication, and taking initiative.",
+          advice: "Daily guidance: shift energy from hesitation into one concrete action.",
+          tg: "Hello Julia! I drew 'The Magician (I)' as my Card of the Day and would like to explore my situation with you."
+        },
+        cz: {
+          name: "Mág",
+          keywords: "Soustředění • Vůle • Realizace",
+          text: "Už nyní máte v rukou všechny nástroje i vnitřní sílu k tomu, abyste věci posunuli kupředu. Den přeje vědomým rozhodnutím a vlastní iniciativě.",
+          advice: "Rada dne: převeďte pozornost z pochybností do jednoho konkrétního kroku.",
+          tg: "Dobrý den, Julie! Vyšla mi Karta dne „Mág (I)“ a rád(a) bych s vámi probral(a) svou situaci."
+        }
+      },
+      {
+        numeral: "II",
+        symbol: "&#9790;",
+        ru: {
+          name: "Верховная Жрица",
+          keywords: "Интуиция • Тишина • Глубина",
+          text: "Не торопите события и не ищите ответы во внешнем шуме. Вся необходимая информация уже проявляется через ваши внутренние ощущения, сны и тонкие знаки.",
+          advice: "Совет дня: возьмите паузу перед окончательным решением и прислушайтесь к первому тихому отклику внутри.",
+          tg: "Здравствуйте, Юля! Мне выпала Карта дня «Верховная Жрица (II)». Хочу записаться на разбор."
+        },
+        en: {
+          name: "The High Priestess",
+          keywords: "Intuition • Stillness • Depth",
+          text: "Do not rush outward action or seek answers in external noise. What you need to know is already surfacing through your inner knowing and subtle cues.",
+          advice: "Daily guidance: pause before committing and honor your quiet first instinct.",
+          tg: "Hello Julia! I drew 'The High Priestess (II)' as my Card of the Day and would like to book a session."
+        },
+        cz: {
+          name: "Velekněžka",
+          keywords: "Intuice • Ticho • Hloubka",
+          text: "Neuspěchejte události a nehledejte odpovědi ve vnějším hluku. Vše podstatné se už nyní ukazuje skrze vaše vnitřní vnímání a jemné signály.",
+          advice: "Rada dne: dopřejte si před rozhodnutím krátké ztišení a naslouchejte své intuici.",
+          tg: "Dobrý den, Julie! Vyšla mi Karta dne „Velekněžka (II)“ a rád(a) bych se objednal(a) na konzultaci."
+        }
+      },
+      {
+        numeral: "III",
+        symbol: "&#9792;",
+        ru: {
+          name: "Императрица",
+          keywords: "Ресурс • Забота • Изобилие",
+          text: "День наполнения, телесного комфорта и мягкого созидания. Ваши проекты и отношения расцветают там, где вы действуете из любви к себе и бережного отношения к своей энергии.",
+          advice: "Совет дня: уделите время восстановлению тела и эстетике пространства вокруг вас.",
+          tg: "Здравствуйте, Юля! Мне выпала Карта дня «Императрица (III)». Хочу обсудить свой запрос."
+        },
+        en: {
+          name: "The Empress",
+          keywords: "Nurturing • Vitality • Abundance",
+          text: "A day of replenishment, grounded comfort, and gentle creation. Your plans and relationships flourish when rooted in self-care and unhurried presence.",
+          advice: "Daily guidance: invest in physical restoration and beauty in your immediate surroundings.",
+          tg: "Hello Julia! I drew 'The Empress (III)' as my Card of the Day and would love to discuss my question."
+        },
+        cz: {
+          name: "Císařovna",
+          keywords: "Zdroj • Péče • Hojnost",
+          text: "Den naplnění, pohody a jemného tvoření. Vaše záměry i vztahy vzkvétají tam, kde jednáte z laskavosti k sobě a pečujete o svou energii.",
+          advice: "Rada dne: věnujte čas odpočinku těla a harmonii prostředí kolem vás.",
+          tg: "Dobrý den, Julie! Vyšla mi Karta dne „Císařovna (III)“ a rád(a) bych s vámi probral(a) svůj dotaz."
+        }
+      },
+      {
+        numeral: "VI",
+        symbol: "&#9825;",
+        ru: {
+          name: "Влюблённые",
+          keywords: "Выбор сердца • Гармония • Союз",
+          text: "Перед вами встаёт выбор, который невозможно сделать только холодным расчётом. Карта указывает на необходимость согласовать свои действия с истинными ценностями и честностью перед собой.",
+          advice: "Совет дня: выбирайте то, что откликается внутренним согласием, а не чувством долга.",
+          tg: "Здравствуйте, Юля! Мне выпала Карта дня «Влюблённые (VI)». Хочу сделать расклад на выбор/отношения."
+        },
+        en: {
+          name: "The Lovers",
+          keywords: "Heart Choice • Harmony • Alignment",
+          text: "You are invited to make a choice that cannot be solved by logic alone. Align your next step with your true values and emotional honesty.",
+          advice: "Daily guidance: choose what resonates with genuine inner alignment rather than obligation.",
+          tg: "Hello Julia! I drew 'The Lovers (VI)' as my Card of the Day and would like a reading on a choice or relationship."
+        },
+        cz: {
+          name: "Zamilovaní",
+          keywords: "Volba srdce • Harmonie • Soulad",
+          text: "Stojíte před volbou, kterou nelze vyřešit jen chladným rozumem. Karta vybízí sladit vaše kroky s vašimi skutečnými hodnotami a vnitřní pravdivostí.",
+          advice: "Rada dne: zvolte to, co přináší vnitřní soulad, nikoli jen pocit povinnosti.",
+          tg: "Dobrý den, Julie! Vyšla mi Karta dne „Zamilovaní (VI)“ a rád(a) bych výklad na vztahy nebo volbu."
+        }
+      },
+      {
+        numeral: "IX",
+        symbol: "&#10038;",
+        ru: {
+          name: "Отшельник",
+          keywords: "Мудрость • Уединение • Ясность",
+          text: "Сегодня особенно ценно замедлиться и отсечь лишнюю суету. В спокойном уединении вы сможете увидеть корень волнующей ситуации и найти собственный внутренний ориентир.",
+          advice: "Совет дня: сократите информационный шум и выделите хотя бы полчаса для тишины наедине с собой.",
+          tg: "Здравствуйте, Юля! Мне выпала Карта дня «Отшельник (IX)». Хочу записаться на индивидуальную консультацию."
+        },
+        en: {
+          name: "The Hermit",
+          keywords: "Wisdom • Solitude • Clarity",
+          text: "Slowing down and stepping back from daily noise brings rare clarity today. In quiet reflection, the root of a lingering question becomes clear.",
+          advice: "Daily guidance: reduce digital noise and carve out thirty minutes of uninterrupted stillness.",
+          tg: "Hello Julia! I drew 'The Hermit (IX)' as my Card of the Day and would like to book an individual consultation."
+        },
+        cz: {
+          name: "Poustevník",
+          keywords: "Moudrost • Ztišení • Jasnost",
+          text: "Dnes má zvláštní hodnotu zpomalit a poodstoupit od každodenního shonu. V klidném ztišení snáze zahlédnete jádro situace i svůj vlastní směr.",
+          advice: "Rada dne: omezte informační hluk a dopřejte si alespoň půl hodiny v tichu o samotě.",
+          tg: "Dobrý den, Julie! Vyšla mi Karta dne „Poustevník (IX)“ a rád(a) bych se objednal(a) na konzultaci."
+        }
+      },
+      {
+        numeral: "X",
+        symbol: "&#9784;",
+        ru: {
+          name: "Колесо Фортуны",
+          keywords: "Поворот • Шанс • Поток",
+          text: "Обстоятельства начинают разворачиваться в новую фазу. То, что казалось застывшим, приходит в движение — будьте внимательны к неожиданным предложениям и совпадениям.",
+          advice: "Совет дня: сохраняйте гибкость и не цепляйтесь за старый план, если жизнь предлагает более короткий путь.",
+          tg: "Здравствуйте, Юля! Мне выпала Карта дня «Колесо Фортуны (X)». Хочу посмотреть перспективы ситуации."
+        },
+        en: {
+          name: "Wheel of Fortune",
+          keywords: "Turning Point • Opportunity • Flow",
+          text: "Circumstances are shifting into a new cycle. What felt stagnant is beginning to move—stay attentive to timely coincidences and unexpected openings.",
+          advice: "Daily guidance: stay adaptable and welcome a better route when it appears.",
+          tg: "Hello Julia! I drew 'Wheel of Fortune (X)' as my Card of the Day and would like to look into upcoming shifts."
+        },
+        cz: {
+          name: "Kolo štěstí",
+          keywords: "Obrat • Příležitost • Proud",
+          text: "Okolnosti se začínají posouvat do nové fáze. To, co se zdálo nehybné, se dává do pohybu — všímejte si nečekaných nabídek a souher okolností.",
+          advice: "Rada dne: zůstaňte pružní a netrvejte na starém plánu, pokud se objeví lepší cesta.",
+          tg: "Dobrý den, Julie! Vyšla mi Karta dne „Kolo štěstí (X)“ a rád(a) bych se podíval(a) na vývoj situace."
+        }
+      },
+      {
+        numeral: "XIV",
+        symbol: "&#9878;",
+        ru: {
+          name: "Умеренность",
+          keywords: "Баланс • Исцеление • Мера",
+          text: "Время мягкого выравнивания энергии и восстановления внутреннего равновесия. Не форсируйте события: всё складывается в правильном темпе, когда вы не тратите силы на тревогу.",
+          advice: "Совет дня: берегите свой эмоциональный ресурс и соблюдайте баланс между отдачей и отдыхом.",
+          tg: "Здравствуйте, Юля! Мне выпала Карта дня «Умеренность (XIV)». Интересует восстановление ресурса / чистка."
+        },
+        en: {
+          name: "Temperance",
+          keywords: "Balance • Healing • Measure",
+          text: "A day of gentle alignment and restoring inner equilibrium. Nothing needs to be forced—things come together naturally when you conserve your emotional energy.",
+          advice: "Daily guidance: protect your energy reserves and honor a steady, unhurried pace.",
+          tg: "Hello Julia! I drew 'Temperance (XIV)' as my Card of the Day and am interested in energy restoration."
+        },
+        cz: {
+          name: "Mírnost",
+          keywords: "Rovnováha • Léčení • Míra",
+          text: "Čas jemného vyrovnání energie a obnovy vnitřní rovnováhy. Na nic netlačte — vše zapadá na své místo ve správném tempu, když šetříte své síly.",
+          advice: "Rada dne: chraňte svou energii a udržujte rovnováhu mezi výkonem a odpočinkem.",
+          tg: "Dobrý den, Julie! Vyšla mi Karta dne „Mírnost (XIV)“ a zajímá mě obnovení energie / očista."
+        }
+      },
+      {
+        numeral: "XVII",
+        symbol: "&#10022;",
+        ru: {
+          name: "Звезда",
+          keywords: "Надежда • Вдохновение • Ясность",
+          text: "После периода напряжения приходит светлое обновление и ощущение правильного пути. Карта подтверждает: ваша цель жива, а пространство мягко поддерживает ваше движение вперёд.",
+          advice: "Совет дня: доверьтесь дальней перспективе и позвольте себе мечтать масштабно без спешки.",
+          tg: "Здравствуйте, Юля! Мне выпала Карта дня «Звезда (XVII)». Хочу записаться на расклад."
+        },
+        en: {
+          name: "The Star",
+          keywords: "Hope • Inspiration • Clarity",
+          text: "Following a period of tension, calm renewal and a clear sense of direction return. Your path is supported—trust the quiet optimism emerging within you.",
+          advice: "Daily guidance: keep your eyes on the broader horizon without rushing the process.",
+          tg: "Hello Julia! I drew 'The Star (XVII)' as my Card of the Day and would like to book a reading."
+        },
+        cz: {
+          name: "Hvězda",
+          keywords: "Naděje • Inspirace • Jasnost",
+          text: "Po období napětí přichází klidná obnova a pocit správného směru. Karta potvrzuje, že vaše cesta má podporu a vnáší do situace světlo.",
+          advice: "Rada dne: důvěřujte širší perspektivě a nespěchejte na výsledek.",
+          tg: "Dobrý den, Julie! Vyšla mi Karta dne „Hvězda (XVII)“ a rád(a) bych se objednal(a) na výklad."
+        }
+      },
+      {
+        numeral: "XIX",
+        symbol: "&#9728;",
+        ru: {
+          name: "Солнце",
+          keywords: "Ясность • Радость • Успех",
+          text: "Один из самых светлых и открытых арканов. Туман рассеивается, принося тёплую ясность, уверенность в себе и благоприятное разрешение волнующего вопроса.",
+          advice: "Совет дня: проявляйтесь открыто, делитесь теплом и фиксируйте свои победы.",
+          tg: "Здравствуйте, Юля! Мне выпала Карта дня «Солнце (XIX)». Хочу глубже разобрать свой запрос."
+        },
+        en: {
+          name: "The Sun",
+          keywords: "Clarity • Joy • Vitality",
+          text: "One of the brightest cards in the deck. Fog lifts to reveal warm clarity, confidence, and a constructive resolution to what has been on your mind.",
+          advice: "Daily guidance: step forward openly and acknowledge what is already thriving in your life.",
+          tg: "Hello Julia! I drew 'The Sun (XIX)' as my Card of the Day and would love to explore my question further."
+        },
+        cz: {
+          name: "Slunce",
+          keywords: "Jasnost • Radost • Úspěch",
+          text: "Jeden z nejsvětlejších arkánů. Mlha se rozplývá a přináší hřejivou jasnost, sebedůvěru i příznivé vyjasnění toho, co řešíte.",
+          advice: "Rada dne: jednejte otevřeně a všimněte si toho, co se vám už nyní daří.",
+          tg: "Dobrý den, Julie! Vyšla mi Karta dne „Slunce (XIX)“ a rád(a) bych s vámi probral(a) svůj dotaz."
+        }
+      }
+    ];
+
+    let currentCardIndex = null;
+
+    function renderSelectedCard() {
+      if (currentCardIndex === null) return;
+      const lang = document.documentElement.lang || 'ru';
+      const card = tarotDeck[currentCardIndex];
+      const data = card[lang] || card.ru;
+
+      document.getElementById('jp-card-numeral').textContent = card.numeral;
+      document.getElementById('jp-card-symbol').innerHTML = card.symbol;
+      document.getElementById('jp-card-name').textContent = data.name;
+      document.getElementById('jp-card-keywords').textContent = data.keywords;
+
+      document.getElementById('jp-reading-title').textContent = `${card.numeral} · ${data.name}`;
+      document.getElementById('jp-reading-text').textContent = data.text;
+      document.getElementById('jp-reading-advice').textContent = data.advice;
+
+      const tgLink = document.getElementById('jp-card-tg-link');
+      if (tgLink) {
+        tgLink.href = `https://t.me/jp_taro?text=${encodeURIComponent(data.tg)}`;
+      }
+    }
+
+    function getTodayDateString() {
+      const now = new Date();
+      const y = now.getFullYear();
+      const m = String(now.getMonth() + 1).padStart(2, '0');
+      const d = String(now.getDate()).padStart(2, '0');
+      return `${y}-${m}-${d}`;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const scene = document.getElementById('jp-tarot-scene');
+      const cardEl = document.getElementById('jp-tarot-card');
+      const drawBtn = document.getElementById('jp-draw-card-btn');
+      const readingBox = document.getElementById('jp-card-reading');
+
+      if (!scene || !cardEl || !drawBtn || !readingBox) return;
+
+      const STORAGE_KEY = 'jp_daily_tarot_draw';
+      const todayStr = getTodayDateString();
+
+      // Проверяем, была ли карта уже вытянута сегодня
+      try {
+        const savedRaw = localStorage.getItem(STORAGE_KEY);
+        if (savedRaw) {
+          const saved = JSON.parse(savedRaw);
+          if (saved && saved.date === todayStr && typeof saved.index === 'number' && tarotDeck[saved.index]) {
+            currentCardIndex = saved.index;
+            renderSelectedCard();
+            cardEl.style.transition = 'none';
+            cardEl.classList.add('is-flipped');
+            scene.style.cursor = 'default';
+            drawBtn.style.display = 'none';
+            readingBox.classList.add('is-visible');
+            requestAnimationFrame(() => {
+              requestAnimationFrame(() => {
+                cardEl.style.transition = '';
+              });
+            });
+          }
+        }
+      } catch (e) {}
+
+      const drawCard = () => {
+        if (cardEl.classList.contains('is-flipped')) return;
+
+        const nextIndex = Math.floor(Math.random() * tarotDeck.length);
+        currentCardIndex = nextIndex;
+        renderSelectedCard();
+
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify({
+            date: getTodayDateString(),
+            index: nextIndex
+          }));
+        } catch (e) {}
+
+        cardEl.classList.add('is-flipped');
+        scene.style.cursor = 'default';
+        drawBtn.style.display = 'none';
+
+        setTimeout(() => {
+          readingBox.classList.add('is-visible');
+        }, 450);
+      };
+
+      scene.addEventListener('click', drawCard);
+      scene.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          drawCard();
+        }
+      });
+      drawBtn.addEventListener('click', drawCard);
+
+      // Обновлять язык открытой карты при переключении RU/EN/CZ
+      document.querySelectorAll('.jp-lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          setTimeout(renderSelectedCard, 0);
+        });
+      });
     });
   </script>
 </body>
