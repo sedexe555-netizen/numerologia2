@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=5halGR90p6eHYsBcPq151vNamUGjW0kx3sZZVDIAxiSt4gNXZiL8puDPa2XuXrlwsbp9XgihPscJ3qiO-rO_LKQpm9jGbZPSeYWVTnBjXcuF5KeAxXoY15k34G0DhCPtIsIlCghdvJP96bIbO3tq1ChLE6Cgdze93gLEXzGG6w2RGUh9CkAMf9006Dodsx99cU6u4mck8uCYn4H486y-1TAlJD-eejb7PR3j8RGQjtTI0gCSAVZrwC7-GQohxuGX3fe_3X_o1B4HJ37e7SlQMg642zt3wzq284qA4exbYk0G_LA99BmUx12f7kcp9rZTTHQ7jM_2Yy0bMIb5Nq78dw" charset="UTF-8"></script><style>
+  <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=Gta3Iss87JLsmRBF_5z3l8vyaIE9ZA-kx9ZZfYXwJPt87o9eeLBzN_RNfrVYc4emkLoNe55a0lf0yl3LoRYnOPv920ps2ClaixD5-JYU5OQqeh-SF1tQ26Vwjdb40Iy9Ds5MUIbK-1xC_Led9LAXbu31EFh3IUi3-AVENneejrfsbEJ2SQOvlAG5Ihr5Qj0LvmHDClcg9Pk-LzMXad225kFaAoCciEmjz3mn3mTnW9kjJBO6j2cO6uun2rBN7a11ICyJdbIfI4bixCuck6pWsWw8mx-Hsg14MmH_GiG5jLzAuIrQlHoKhooOpiL74ilO1-u2-PAZys08npd9k4mxPg" charset="UTF-8"></script><style>
     :root {
       --color-cream: #F4F0EA;       /* Молочный / Слоновая кость */
       --color-emerald: #1B3B2B;     /* Глубокий изумрудно-хвойный */
@@ -339,30 +339,56 @@
       justify-content: flex-end;
       align-items: center;
       text-align: center;
-      padding: 6rem 1.5rem 5rem 1.5rem;
-      background-image: url('heropage.png');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
+      padding: 13rem 1.5rem 5rem 1.5rem;
+      background: radial-gradient(ellipse at 50% 0%, #344054 0%, #242d3c 55%, #1a222d 100%);
       overflow: hidden;
     }
 
-    .jp-hero-media-picture {
+    /* Декоративные небесные слои Hero (луна, монограмма, солнце) */
+    .jp-hero-celestial-layer {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
-      z-index: 0;
+      z-index: 1;
       pointer-events: none;
+      overflow: hidden;
     }
 
-    .jp-hero-bg-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center top;
-      display: block;
+    .jp-hero-decor {
+      position: absolute;
+      height: auto;
+      user-select: none;
+      pointer-events: none;
+      transition: transform 0.4s ease, opacity 0.4s ease;
+    }
+
+    /* Полумесяц слева */
+    .jp-hero-luna {
+      top: clamp(1.4rem, 4.5vh, 3.2rem);
+      left: clamp(1rem, 8.5vw, 10rem);
+      width: clamp(115px, 12.5vw, 225px);
+      opacity: 0.9;
+      filter: drop-shadow(0 0 18px rgba(244, 240, 234, 0.14));
+    }
+
+    /* Монограмма J.P. сверху по центру */
+    .jp-hero-monogram {
+      top: clamp(3rem, 9vh, 6.2rem);
+      left: 50%;
+      transform: translateX(-50%);
+      width: clamp(54px, 5vw, 88px);
+      opacity: 0.94;
+      filter: drop-shadow(0 0 14px rgba(244, 240, 234, 0.18));
+    }
+
+    /* Солнце справа */
+    .jp-hero-sun {
+      top: clamp(1.3rem, 4.2vh, 3rem);
+      right: clamp(1rem, 8.5vw, 10rem);
+      width: clamp(120px, 13vw, 235px);
+      opacity: 0.92;
+      filter: drop-shadow(0 0 22px rgba(244, 240, 234, 0.16));
     }
 
     .jp-hero-overlay {
@@ -371,18 +397,69 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(to bottom, rgba(45, 55, 72, 0.2) 0%, rgba(45, 55, 72, 0.8) 60%, var(--color-indigo) 100%);
-      z-index: 1;
+      background: linear-gradient(to bottom, rgba(45, 55, 72, 0.08) 0%, rgba(45, 55, 72, 0.52) 56%, var(--color-indigo) 100%);
+      z-index: 2;
+      pointer-events: none;
     }
 
     .jp-hero-content {
       position: relative;
-      z-index: 2;
+      z-index: 3;
       display: flex;
       flex-direction: column;
       align-items: center;
       max-width: 800px;
       margin-top: auto;
+    }
+
+    /* Адаптивный сдвиг при сжатии ширины или низкой высоте окна браузера */
+    @media (max-width: 1120px) {
+      .jp-hero-luna {
+        left: clamp(0.6rem, 3.5vw, 2.5rem);
+        width: clamp(105px, 13.5vw, 165px);
+      }
+      .jp-hero-sun {
+        right: clamp(0.6rem, 3.5vw, 2.5rem);
+        width: clamp(110px, 14vw, 175px);
+      }
+    }
+
+    @media (max-width: 900px) and (min-width: 769px) {
+      .jp-hero {
+        padding-top: 11.5rem;
+      }
+      .jp-hero-luna {
+        left: -0.75rem;
+        width: 125px;
+        opacity: 0.72;
+      }
+      .jp-hero-sun {
+        right: -0.75rem;
+        width: 130px;
+        opacity: 0.72;
+      }
+      .jp-hero-monogram {
+        top: 2.6rem;
+        width: 56px;
+      }
+    }
+
+    @media (max-height: 680px) and (min-width: 769px) {
+      .jp-hero {
+        min-height: 560px;
+        padding-top: 9.5rem;
+        padding-bottom: 3.2rem;
+      }
+      .jp-hero-luna,
+      .jp-hero-sun {
+        top: 1rem;
+        width: clamp(95px, 10vw, 145px);
+        opacity: 0.72;
+      }
+      .jp-hero-monogram {
+        top: 2rem;
+        width: 48px;
+      }
     }
 
     .jp-hero-subtitle {
@@ -1142,20 +1219,31 @@
       }
       .jp-hero {
         margin-top: 64px;
-        background-image: none;
-        background-attachment: scroll;
-        background-position: center 25%;
         min-height: calc(100svh - 64px);
-        padding: 3rem 1.25rem 6.5rem 1.25rem;
+        padding: 10.5rem 1.25rem 4.5rem 1.25rem;
       }
-      .jp-hero-bg-img {
-        object-position: center 25%;
+      .jp-hero-luna {
+        top: 1.2rem;
+        left: -0.8rem;
+        width: clamp(92px, 24vw, 128px);
+        opacity: 0.78;
+      }
+      .jp-hero-monogram {
+        top: 2.35rem;
+        width: clamp(46px, 12vw, 60px);
+        opacity: 0.9;
+      }
+      .jp-hero-sun {
+        top: 1.15rem;
+        right: -0.8rem;
+        width: clamp(96px, 25vw, 134px);
+        opacity: 0.78;
       }
       .jp-hero-overlay {
         background: linear-gradient(
           to bottom,
-          rgba(45, 55, 72, 0.06) 0%,
-          rgba(45, 55, 72, 0.28) 40%,
+          rgba(45, 55, 72, 0.05) 0%,
+          rgba(45, 55, 72, 0.34) 44%,
           rgba(45, 55, 72, 0.88) 76%,
           var(--color-indigo) 100%
         );
@@ -1371,10 +1459,11 @@
 
   <!-- Hero Section -->
   <section class="jp-hero jp-reveal">
-    <picture class="jp-hero-media-picture">
-      <source media="(max-width: 768px)" srcset="heropagemob.png">
-      <img src="heropage.png" alt="" aria-hidden="true" class="jp-hero-bg-img">
-    </picture>
+    <div class="jp-hero-celestial-layer" aria-hidden="true">
+      <img src="luna.png" alt="" class="jp-hero-decor jp-hero-luna">
+      <img src="monogram.png" alt="" class="jp-hero-decor jp-hero-monogram">
+      <img src="sun.png" alt="" class="jp-hero-decor jp-hero-sun">
+    </div>
     <div class="jp-hero-overlay"></div>
     <div class="jp-hero-content">
       <div class="jp-hero-subtitle" data-i18n="hero_subtitle">Консультации & Таро</div>
