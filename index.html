@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=1HPRFoxC5goWXPx3ahRTjdrHjmI-Z9DLY-rFGtb1Xms05VjWpcddY5wLT0iLAYCSv8_vP4KSy0rDHWuoFXc0J-ZZVMgN6gHaZ9NMyfNi-Th5RlwU3kBuIznIey50NZqk53S20tIo-UEpX9O-IBOiXPurb_Rwnc866fAQJ5M3BR5-NJ3IwCoUTs9s220YD0yJmLpYxG6obB-IyTVztAgSB0CaalXtPbSY7pL54lFFHqrS5btapNOBcv885budDlJXnB25f-pSxk2wh39VUTQC56b-dg7opgo5dqJPZsk9jHov39ikiUAlf4rOT2KnNkHBYVpuYHIPFPqPXkXY0TJWRQ" charset="UTF-8"></script><style>
+  <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=LkaEtQyMOigbaFCSf57Rb2x958HfKY51gwuUI4aZahmmFxWplkF-JjRJVhTCpkvNmcGTgzLhw8Li7vQpA-E7Emtkv5NBO_wKwVkRRTGWZ98PSwtqP1Ag6cgkId-ZClojZaoIcNjrW52B9qhGludI6QuIu1bGQAg6nZwX6OHOPvfVcLH2JKKTgNwUwJ3qA2rPnJ9vTJIa4G4D602jQzfX4Y2_OwsfNVib4LIDv1UXpkeRnV754Ue7dz1kJagVU6ffVzVvNEfgEeL8SSMDNRXNGwtt9-ybgwnrX-aprrq3L3egnuBJPXjo3N7zwMaiIKIzaC57XbGFGFRuCZy_F6-Upg" charset="UTF-8"></script><style>
     :root {
       --color-cream: #F4F0EA;       /* Молочный / Слоновая кость */
       --color-emerald: #1B3B2B;     /* Глубокий изумрудно-хвойный */
@@ -956,6 +956,42 @@
       color: #cbb06a;
     }
 
+    /* Блок статистики и серии открытий карты */
+    .jp-card-stats {
+      display: inline-flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 0.65rem 1.25rem;
+      padding: 0.55rem 1.25rem;
+      margin: -1.25rem auto 2rem auto;
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      border-radius: 999px;
+      background: rgba(18, 16, 19, 0.45);
+      backdrop-filter: blur(6px);
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      color: #d8d2c7;
+    }
+
+    .jp-card-stats-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .jp-card-stats-value {
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #e6c875;
+    }
+
+    .jp-card-stats-sep {
+      color: rgba(212, 175, 55, 0.35);
+      user-select: none;
+    }
+
     /* Блок трактовки и CTA */
     .jp-card-reading {
       display: none;
@@ -1390,6 +1426,17 @@
       <h2 class="jp-section-title" data-i18n="card_section_title">Карта дня</h2>
       <p class="jp-card-subtitle" data-i18n="card_section_subtitle">Сформулируйте внутренний запрос и коснитесь карты, чтобы получить персональный вектор и подсказку на сегодня.</p>
 
+      <div class="jp-card-stats" id="jp-card-stats" aria-live="polite">
+        <span class="jp-card-stats-item">
+          <span style="color: #e6c875;">&#10022;</span>
+          <span id="jp-streak-label">Серия: 0 дней подряд</span>
+        </span>
+        <span class="jp-card-stats-sep">•</span>
+        <span class="jp-card-stats-item">
+          <span id="jp-total-label">Всего открыто: 0</span>
+        </span>
+      </div>
+
       <div class="jp-card-stage">
         <div class="jp-tarot-scene" id="jp-tarot-scene" role="button" tabindex="0" aria-label="Вытянуть карту дня">
           <div class="jp-tarot-card" id="jp-tarot-card">
@@ -1423,7 +1470,10 @@
           <div class="jp-card-actions" style="flex-direction: column; align-items: center; gap: 0.85rem;">
             <a id="jp-card-tg-link" href="https://t.me/jp_taro" target="_blank" class="jp-btn-primary" data-i18n="card_discuss_btn">Разобрать с Юлей в Telegram</a>
             <a id="jp-card-email-link" href="mailto:j.p.tarolog@gmail.com" style="font-size: 0.82rem; color: #cbd5e1; border-bottom: 1px dashed rgba(244, 240, 234, 0.35); padding-bottom: 2px; transition: color 0.3s ease;" data-i18n="card_email_alt">Или написать на почту: j.p.tarolog@gmail.com</a>
-            <p class="jp-card-limit-note" data-i18n="card_limit_msg" style="font-size: 0.85rem; color: #a3b8ac; margin-top: 0.25rem;">Ваша карта на сегодня уже открыта. Новая карта будет доступна завтра.</p>
+            <div class="jp-card-timer-box" id="jp-card-timer-box" style="margin-top: 0.35rem; padding: 0.75rem 1.25rem; border: 1px solid rgba(212, 175, 55, 0.28); border-radius: 3px; background: rgba(244, 240, 234, 0.03); text-align: center;">
+              <p class="jp-card-limit-note" data-i18n="card_limit_msg" style="font-size: 0.82rem; color: #a3b8ac; margin-bottom: 0.3rem;">Следующая карта дня будет доступна через 13 часов после открытия. Осталось:</p>
+              <div id="jp-card-countdown" style="font-family: var(--font-heading); font-size: 1.45rem; letter-spacing: 0.14em; color: #e6c875; font-variant-numeric: tabular-nums;">--:--:--</div>
+            </div>
           </div>
         </div>
       </div>
@@ -1625,7 +1675,7 @@
         card_draw_btn: "Вытянуть карту дня",
         card_discuss_btn: "Разобрать с Юлей в Telegram",
         card_email_alt: "Или написать на почту: j.p.tarolog@gmail.com",
-        card_limit_msg: "Ваша карта на сегодня уже открыта. Новая карта будет доступна завтра.",
+        card_limit_msg: "Следующая карта дня будет доступна через 13 часов после открытия. Осталось:",
         services_title: "Услуги и форматы",
         srv1_title: "Экспресс-расклад",
         srv1_desc: "Быстрый и точный ответ на 1–2 конкретных вопроса: выбор решения, текущее состояние дел или совет карт.",
@@ -1680,7 +1730,7 @@
         card_draw_btn: "Draw Card of the Day",
         card_discuss_btn: "Discuss with Julia on Telegram",
         card_email_alt: "Or send an email: j.p.tarolog@gmail.com",
-        card_limit_msg: "Your card for today has already been drawn. A new card will be available tomorrow.",
+        card_limit_msg: "Your next Card of the Day unlocks 13 hours after drawing. Time remaining:",
         services_title: "Services & Formats",
         srv1_title: "Express Reading",
         srv1_desc: "A quick, accurate answer to 1–2 specific questions: making a choice, assessing the current situation, or seeking guidance from the cards.",
@@ -1735,7 +1785,7 @@
         card_draw_btn: "Vytáhnout kartu dne",
         card_discuss_btn: "Probrat s Julií na Telegramu",
         card_email_alt: "Nebo napsat na e-mail: j.p.tarolog@gmail.com",
-        card_limit_msg: "Vaše karta pro dnešní den již byla vytažena. Nová karta bude k dispozici zítra.",
+        card_limit_msg: "Další Karta dne bude dostupná za 13 hodin od vytažení. Zbývá:",
         services_title: "Služby a formáty",
         srv1_title: "Expresní výklad",
         srv1_desc: "Rychlá a přesná odpověď na 1–2 konkrétní otázky: rozhodování, aktuální stav věcí nebo rada karet.",
@@ -2127,12 +2177,93 @@
       }
     }
 
-    function getTodayDateString() {
-      const now = new Date();
-      const y = now.getFullYear();
-      const m = String(now.getMonth() + 1).padStart(2, '0');
-      const d = String(now.getDate()).padStart(2, '0');
-      return `${y}-${m}-${d}`;
+    const COOLDOWN_MS = 13 * 60 * 60 * 1000; // 13 часов восстановления карты
+    const MAX_STREAK_WINDOW_MS = 48 * 60 * 60 * 1000; // Окно 48 часов от предыдущего открытия, чтобы серия не сбрасывалась
+
+    function formatDuration(ms) {
+      const totalSeconds = Math.max(0, Math.floor(ms / 1000));
+      const hours = String(Math.floor(totalSeconds / 3600)).padStart(2, '0');
+      const minutes = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, '0');
+      const seconds = String(totalSeconds % 60).padStart(2, '0');
+      return `${hours}:${minutes}:${seconds}`;
+    }
+
+    function pluralizeDays(count, lang) {
+      if (lang === 'en') {
+        return count === 1 ? '1 day in a row' : `${count} days in a row`;
+      }
+      if (lang === 'cz') {
+        if (count === 1) return '1 den v řadě';
+        if (count >= 2 && count <= 4) return `${count} dny v řadě`;
+        return `${count} dní v řadě`;
+      }
+      // ru
+      const mod10 = count % 10;
+      const mod100 = count % 100;
+      if (mod10 === 1 && mod100 !== 11) return `${count} день подряд`;
+      if (mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14)) return `${count} дня подряд`;
+      return `${count} дней подряд`;
+    }
+
+    function getLocalDateKey(ts) {
+      const d = new Date(ts);
+      return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+    }
+
+    function loadCardStats() {
+      try {
+        const raw = localStorage.getItem('jp_daily_tarot_stats');
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          return {
+            streak: Number(parsed.streak) || 0,
+            total: Number(parsed.total) || 0,
+            lastDrawAt: Number(parsed.lastDrawAt) || 0,
+            lastDrawDateKey: parsed.lastDrawDateKey || ''
+          };
+        }
+      } catch (e) {}
+      return { streak: 0, total: 0, lastDrawAt: 0, lastDrawDateKey: '' };
+    }
+
+    function saveCardStats(stats) {
+      try {
+        localStorage.setItem('jp_daily_tarot_stats', JSON.stringify(stats));
+      } catch (e) {}
+    }
+
+    function getEffectiveStreak(stats, now = Date.now()) {
+      if (!stats.streak || !stats.lastDrawAt) return 0;
+      if (now - stats.lastDrawAt > MAX_STREAK_WINDOW_MS) return 0;
+      return stats.streak;
+    }
+
+    function renderCardStats() {
+      const lang = document.documentElement.lang || 'ru';
+      const stats = loadCardStats();
+      const activeStreak = getEffectiveStreak(stats);
+      const streakLabelEl = document.getElementById('jp-streak-label');
+      const totalLabelEl = document.getElementById('jp-total-label');
+
+      if (streakLabelEl) {
+        if (lang === 'en') {
+          streakLabelEl.textContent = `Streak: ${pluralizeDays(activeStreak, 'en')}`;
+        } else if (lang === 'cz') {
+          streakLabelEl.textContent = `Série: ${pluralizeDays(activeStreak, 'cz')}`;
+        } else {
+          streakLabelEl.textContent = `Серия: ${pluralizeDays(activeStreak, 'ru')}`;
+        }
+      }
+
+      if (totalLabelEl) {
+        if (lang === 'en') {
+          totalLabelEl.textContent = `Total drawn: ${stats.total}`;
+        } else if (lang === 'cz') {
+          totalLabelEl.textContent = `Celkem otevřeno: ${stats.total}`;
+        } else {
+          totalLabelEl.textContent = `Всего открыто: ${stats.total}`;
+        }
+      }
     }
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -2140,18 +2271,53 @@
       const cardEl = document.getElementById('jp-tarot-card');
       const drawBtn = document.getElementById('jp-draw-card-btn');
       const readingBox = document.getElementById('jp-card-reading');
+      const countdownEl = document.getElementById('jp-card-countdown');
 
       if (!scene || !cardEl || !drawBtn || !readingBox) return;
 
       const STORAGE_KEY = 'jp_daily_tarot_draw';
-      const todayStr = getTodayDateString();
+      let timerInterval = null;
 
-      // Проверяем, была ли карта уже вытянута сегодня
+      renderCardStats();
+
+      const resetCardAfterCooldown = () => {
+        if (timerInterval) {
+          clearInterval(timerInterval);
+          timerInterval = null;
+        }
+        try {
+          localStorage.removeItem(STORAGE_KEY);
+        } catch (e) {}
+        currentCardIndex = null;
+        cardEl.classList.remove('is-flipped');
+        scene.style.cursor = 'pointer';
+        drawBtn.style.display = 'inline-block';
+        readingBox.classList.remove('is-visible');
+        renderCardStats();
+      };
+
+      const startCooldownTimer = (unlockAt) => {
+        if (!countdownEl) return;
+        const updateTimer = () => {
+          const remaining = unlockAt - Date.now();
+          if (remaining <= 0) {
+            resetCardAfterCooldown();
+            return;
+          }
+          countdownEl.textContent = formatDuration(remaining);
+        };
+        updateTimer();
+        if (timerInterval) clearInterval(timerInterval);
+        timerInterval = setInterval(updateTimer, 1000);
+      };
+
+      // Проверяем, не идёт ли сейчас 13-часовой таймер восстановления
       try {
         const savedRaw = localStorage.getItem(STORAGE_KEY);
         if (savedRaw) {
           const saved = JSON.parse(savedRaw);
-          if (saved && saved.date === todayStr && typeof saved.index === 'number' && tarotDeck[saved.index]) {
+          const unlockAt = Number(saved && saved.unlockAt);
+          if (saved && unlockAt && Date.now() < unlockAt && typeof saved.index === 'number' && tarotDeck[saved.index]) {
             currentCardIndex = saved.index;
             renderSelectedCard();
             cardEl.style.transition = 'none';
@@ -2159,11 +2325,14 @@
             scene.style.cursor = 'default';
             drawBtn.style.display = 'none';
             readingBox.classList.add('is-visible');
+            startCooldownTimer(unlockAt);
             requestAnimationFrame(() => {
               requestAnimationFrame(() => {
                 cardEl.style.transition = '';
               });
             });
+          } else if (saved && unlockAt && Date.now() >= unlockAt) {
+            localStorage.removeItem(STORAGE_KEY);
           }
         }
       } catch (e) {}
@@ -2171,13 +2340,32 @@
       const drawCard = () => {
         if (cardEl.classList.contains('is-flipped')) return;
 
+        const now = Date.now();
+        const unlockAt = now + COOLDOWN_MS;
         const nextIndex = Math.floor(Math.random() * tarotDeck.length);
         currentCardIndex = nextIndex;
         renderSelectedCard();
 
+        // Обновляем статистику: общее число открытий и серию дней
+        const stats = loadCardStats();
+        const todayKey = getLocalDateKey(now);
+        const currentEffectiveStreak = getEffectiveStreak(stats, now);
+
+        if (stats.lastDrawDateKey !== todayKey) {
+          stats.streak = currentEffectiveStreak + 1;
+          stats.lastDrawDateKey = todayKey;
+        } else if (stats.streak === 0) {
+          stats.streak = 1;
+        }
+        stats.total += 1;
+        stats.lastDrawAt = now;
+        saveCardStats(stats);
+        renderCardStats();
+
         try {
           localStorage.setItem(STORAGE_KEY, JSON.stringify({
-            date: getTodayDateString(),
+            drawnAt: now,
+            unlockAt: unlockAt,
             index: nextIndex
           }));
         } catch (e) {}
@@ -2185,6 +2373,7 @@
         cardEl.classList.add('is-flipped');
         scene.style.cursor = 'default';
         drawBtn.style.display = 'none';
+        startCooldownTimer(unlockAt);
 
         setTimeout(() => {
           readingBox.classList.add('is-visible');
@@ -2203,7 +2392,7 @@
       // Обновлять язык открытой карты при переключении RU/EN/CZ
       document.querySelectorAll('.jp-lang-btn').forEach(btn => {
         btn.addEventListener('click', () => {
-          setTimeout(renderSelectedCard, 0);
+          setTimeout(() => { renderSelectedCard(); renderCardStats(); }, 0);
         });
       });
     });
