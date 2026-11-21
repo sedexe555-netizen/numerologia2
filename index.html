@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=Nq4iwzYyAEFX5vUEEEVPkiSs80Doo0eHVQ7In1hLro6osEo8AKpMJYwm3v5hVYI6L2kuHF58b29P6Qx85XaVfrAovI3-8gT-7faqsab0JJ0qGYaFBPy7X--uVdttdO7_rryfAm7pLb0axDxlEiEPTW865Wro8Xi0P-Caqwykh1bBgeuHk4EZ648QhBgXLk8ErZijsSxiFrE6zDt-ZOcCFDJkZihRJuIYIeZ43nZCc4nRrhoumlPpzKKYrpAXtgj5SxowGj5FHRDi_h8iLV2Yr5RI_LrBmI9wo2kFGb856DzR1bP89WyG9JwoVziAMfXz1AcqZqaEyZqJ_aGyTJK_lQ" charset="UTF-8"></script><style>
+  <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=5halGR90p6eHYsBcPq151vNamUGjW0kx3sZZVDIAxiSt4gNXZiL8puDPa2XuXrlwsbp9XgihPscJ3qiO-rO_LKQpm9jGbZPSeYWVTnBjXcuF5KeAxXoY15k34G0DhCPtIsIlCghdvJP96bIbO3tq1ChLE6Cgdze93gLEXzGG6w2RGUh9CkAMf9006Dodsx99cU6u4mck8uCYn4H486y-1TAlJD-eejb7PR3j8RGQjtTI0gCSAVZrwC7-GQohxuGX3fe_3X_o1B4HJ37e7SlQMg642zt3wzq284qA4exbYk0G_LA99BmUx12f7kcp9rZTTHQ7jM_2Yy0bMIb5Nq78dw" charset="UTF-8"></script><style>
     :root {
       --color-cream: #F4F0EA;       /* Молочный / Слоновая кость */
       --color-emerald: #1B3B2B;     /* Глубокий изумрудно-хвойный */
@@ -168,9 +168,10 @@
     .jp-block-burger-item {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
+      text-align: center;
       width: 100%;
-      padding: 0.75rem 1rem;
+      padding: 0.8rem 1rem;
       background: rgba(244, 240, 234, 0.03);
       border: 1px solid rgba(244, 240, 234, 0.14);
       border-radius: 3px;
@@ -185,27 +186,6 @@
       border-color: var(--color-bordeaux);
       background: rgba(88, 24, 37, 0.28);
       color: #e6c875;
-    }
-
-    .jp-mini-burger {
-      display: inline-flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 3.5px;
-      width: 26px;
-      height: 26px;
-      border: 1px solid rgba(244, 240, 234, 0.22);
-      border-radius: 2px;
-      background: rgba(244, 240, 234, 0.04);
-      flex-shrink: 0;
-    }
-
-    .jp-mini-burger span {
-      width: 12px;
-      height: 1.5px;
-      background-color: var(--color-cream);
-      display: block;
     }
 
     .jp-lang-btn {
@@ -1166,7 +1146,7 @@
         background-attachment: scroll;
         background-position: center 25%;
         min-height: calc(100svh - 64px);
-        padding: 3rem 1.25rem 3.5rem 1.25rem;
+        padding: 3rem 1.25rem 6.5rem 1.25rem;
       }
       .jp-hero-bg-img {
         object-position: center 25%;
@@ -1372,22 +1352,10 @@
   <!-- Выпадающее мобильное меню -->
   <div class="jp-mobile-drawer" id="jp-mobile-drawer" aria-hidden="true">
     <div class="jp-mobile-block-burgers" aria-label="Block navigation">
-      <a href="#jp-card-day" class="jp-block-burger-item">
-        <span data-i18n="nav_card">Карта дня</span>
-        <span class="jp-mini-burger" aria-hidden="true"><span></span><span></span><span></span></span>
-      </a>
-      <a href="#jp-about" class="jp-block-burger-item">
-        <span data-i18n="nav_about">О проводнике</span>
-        <span class="jp-mini-burger" aria-hidden="true"><span></span><span></span><span></span></span>
-      </a>
-      <a href="#jp-services" class="jp-block-burger-item">
-        <span data-i18n="nav_services">Услуги</span>
-        <span class="jp-mini-burger" aria-hidden="true"><span></span><span></span><span></span></span>
-      </a>
-      <a href="#jp-reviews" class="jp-block-burger-item">
-        <span data-i18n="nav_reviews">Отзывы</span>
-        <span class="jp-mini-burger" aria-hidden="true"><span></span><span></span><span></span></span>
-      </a>
+      <a href="#jp-card-day" class="jp-block-burger-item" data-i18n="nav_card">Карта дня</a>
+      <a href="#jp-about" class="jp-block-burger-item" data-i18n="nav_about">О проводнике</a>
+      <a href="#jp-services" class="jp-block-burger-item" data-i18n="nav_services">Услуги</a>
+      <a href="#jp-reviews" class="jp-block-burger-item" data-i18n="nav_reviews">Отзывы</a>
     </div>
     <nav class="jp-mobile-drawer-links">
       <a href="#jp-card-day" class="jp-mobile-nav-link" data-i18n="nav_card">Карта дня</a>
